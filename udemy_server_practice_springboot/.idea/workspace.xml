@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b1957b31-2a70-43e0-9cc1-0c4c703d84bd" name="Changes" comment="Changes" />
+    <list default="true" id="b1957b31-2a70-43e0-9cc1-0c4c703d84bd" name="Changes" comment="Changes">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/src/test/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/src/test/TestController.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
