@@ -21,7 +21,7 @@ public class TestController {
      */
 
     @ResponseBody
-    @GetMapping("hana")
+    @GetMapping("/hana")
     public String testHana(){
         return "sussess in jacpot";
     }
