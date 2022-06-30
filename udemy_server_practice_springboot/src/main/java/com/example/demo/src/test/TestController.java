@@ -19,4 +19,10 @@ public class TestController {
      * [GET] /test/log
      * @return String
      */
+
+    @ResponseBody
+    @GetMapping("gana")
+    public String testGana(){
+        return "sussess in jacpot";
+    }
 }
