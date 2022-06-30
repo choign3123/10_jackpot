@@ -23,6 +23,7 @@ public class TestController {
     @ResponseBody
     @GetMapping("/hana")
     public String testHana(){
+        int a = 5;
         return "sussess in jacpot";
     }
 
