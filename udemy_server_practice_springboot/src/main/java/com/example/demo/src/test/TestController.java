@@ -28,4 +28,8 @@ public class TestController {
     }
 
     public String testSSh(){return "test1212"; }
+    public void testSSh(){
+        int gana = 5;
+        System.out.println("가나 브랜치 충돌");
+    }
 }

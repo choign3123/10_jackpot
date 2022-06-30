@@ -18,5 +18,11 @@ class MainActivity : AppCompatActivity() {
         var abc:String?
     }
 
+
     // 김현재
+
+    fun testFun2(){
+        
+    }
+
 }
