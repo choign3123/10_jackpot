@@ -25,4 +25,6 @@ public class TestController {
     public String testHana(){
         return "sussess in jacpot";
     }
+
+    public void testSSh(){}
 }
