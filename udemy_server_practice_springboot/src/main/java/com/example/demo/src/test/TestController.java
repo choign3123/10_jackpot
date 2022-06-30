@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "http://localhost:9000")
+
 @RestController
 @RequestMapping("/test")
 public class TestController {
@@ -21,8 +21,8 @@ public class TestController {
      */
 
     @ResponseBody
-    @GetMapping("gana")
-    public String testGana(){
+    @GetMapping("hana")
+    public String testHana(){
         return "sussess in jacpot";
     }
 }
