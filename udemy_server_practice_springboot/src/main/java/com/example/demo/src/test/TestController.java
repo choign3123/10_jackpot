@@ -27,5 +27,5 @@ public class TestController {
         return "sussess in jacpot";
     }
 
-    public void testSSh(){}
+    public String testSSh(){return "test1212"; }
 }
