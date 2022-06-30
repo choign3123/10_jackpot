@@ -17,4 +17,8 @@ class MainActivity : AppCompatActivity() {
     fun testFun() {
         var abc:String?
     }
+
+    fun testFun2(){
+        
+    }
 }
