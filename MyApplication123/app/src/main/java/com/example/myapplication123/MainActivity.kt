@@ -9,7 +9,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
+
     fun testGana(){
         android.util.Log.d("gana", "testGana: test")
+    }
+
+    fun testFun() {
+        var abc:String?
     }
 }
