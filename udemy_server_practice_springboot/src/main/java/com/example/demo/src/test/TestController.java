@@ -27,5 +27,8 @@ public class TestController {
         return "sussess in jacpot";
     }
 
-    public void testSSh(){}
+    public void testSSh(){
+        int gana = 5;
+        System.out.println("가나 브랜치 충돌");
+    }
 }
