@@ -1,0 +1,14 @@
+11:46:59.214 WARN  [File:UserService.java] [Func:login] [Line:92] [Message:왜 안되는거니?]- 왜 안되는거니?
+11:47:52.442 WARN  [File:UserService.java] [Func:login] [Line:90] [Message:유저 비밀번호 gn0303]- 유저 비밀번호 gn0303
+11:47:52.444 WARN  [File:UserService.java] [Func:login] [Line:91] [Message:암호화된 비밀번호인가? ad372cf28e84392d2624e1950129aa843f2681ef3e6ca5598a595c635c55afa3]- 암호화된 비밀번호인가? ad372cf28e84392d2624e1950129aa843f2681ef3e6ca5598a595c635c55afa3
+11:47:52.445 WARN  [File:UserService.java] [Func:login] [Line:92] [Message:왜 안되는거니?]- 왜 안되는거니?
+11:48:26.166 WARN  [File:TestController.java] [Func:getAll] [Line:35] [Message:Warn Level 테스트]- Warn Level 테스트
+11:48:26.167 ERROR [File:TestController.java] [Func:getAll] [Line:38] [Message:ERROR Level 테스트]- ERROR Level 테스트
+12:00:23.873 WARN  [File:TestController.java] [Func:getAll] [Line:35] [Message:Warn Level 테스트]- Warn Level 테스트
+12:00:23.875 ERROR [File:TestController.java] [Func:getAll] [Line:38] [Message:ERROR Level 테스트]- ERROR Level 테스트
+12:00:34.926 WARN  [File:UserService.java] [Func:login] [Line:90] [Message:유저 비밀번호 gn0303]- 유저 비밀번호 gn0303
+12:00:34.927 WARN  [File:UserService.java] [Func:login] [Line:91] [Message:암호화된 비밀번호인가? ad372cf28e84392d2624e1950129aa843f2681ef3e6ca5598a595c635c55afa3]- 암호화된 비밀번호인가? ad372cf28e84392d2624e1950129aa843f2681ef3e6ca5598a595c635c55afa3
+12:00:34.927 WARN  [File:UserService.java] [Func:login] [Line:92] [Message:왜 안되는거니?]- 왜 안되는거니?
+15:03:32.941 WARN  [File:UserService.java] [Func:login] [Line:90] [Message:유저 비밀번호 gn0303]- 유저 비밀번호 gn0303
+15:03:32.944 WARN  [File:UserService.java] [Func:login] [Line:91] [Message:암호화된 비밀번호인가? ad372cf28e84392d2624e1950129aa843f2681ef3e6ca5598a595c635c55afa3]- 암호화된 비밀번호인가? ad372cf28e84392d2624e1950129aa843f2681ef3e6ca5598a595c635c55afa3
+15:03:32.945 WARN  [File:UserService.java] [Func:login] [Line:92] [Message:왜 안되는거니?]- 왜 안되는거니?
