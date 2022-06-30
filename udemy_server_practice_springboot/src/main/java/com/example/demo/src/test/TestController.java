@@ -26,4 +26,6 @@ public class TestController {
         int a = 5;
         return "sussess in jacpot";
     }
+
+    public void testSSh(){}
 }
