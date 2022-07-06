@@ -13,36 +13,5 @@ class MainActivity : AppCompatActivity() {
 
         initBottomNavigation()
     }
-
-
-    private fun initBottomNavigation() {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.main_frm, FragmentOne())
-            .commitAllowingStateLoss()
-        binding.mainBnv.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.postFragment -> {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.main_frm, FragmentOne())
-                        .commitAllowingStateLoss()
-                    return@setOnItemSelectedListener true
-                }
-
-                R.id.clothesFragment -> {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.main_frm, FragmentTwo())
-                        .commitAllowingStateLoss()
-                    return@setOnItemSelectedListener true
-                }
-                R.id.myPageFragment -> {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.main_frm, FragmentThree())
-                        .commitAllowingStateLoss()
-                    return@setOnItemSelectedListener true
-
-                }
-            }
-            false
-        }
-    }
+    
 }
