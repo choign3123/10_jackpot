@@ -26,11 +26,7 @@
         android:maxWidth="@dimen/custom_max_width"
         android:hint="pwd">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
 
-    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/login_btn"

@@ -25,7 +25,7 @@ interface RetrofitService {
     fun postPost(
         @Path("userIdx") userIdx : Int?,
         @Part img: MultipartBody.Part,
-        @Part content: RequestBody
+        @Part ("content") content: RequestBody
         ): Call<PostPostResult>
 
     // 게시물 전체 조회
