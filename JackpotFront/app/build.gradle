@@ -54,4 +54,8 @@ dependencies {
     // 글라이드 추가
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+
+    // 즐겨찾기 애니메이션
+    def lottieVersion = '5.2.0'
+    implementation "com.airbnb.android:lottie:$lottieVersion"
 }
