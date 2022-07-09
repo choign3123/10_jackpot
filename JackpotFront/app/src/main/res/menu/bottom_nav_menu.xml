@@ -20,7 +20,7 @@
     <item
         android:id="@+id/rankingFragment"
         android:enabled="true"
-        android:icon="@android:dra"
+        android:icon="@drawable/baseline_emoji_events_20"
         android:title="search"
         app:showAsAction="always"
         tools:ignore="AlwaysShowAction" />

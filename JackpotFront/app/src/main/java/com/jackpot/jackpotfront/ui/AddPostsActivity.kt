@@ -12,7 +12,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import com.bumptech.glide.Glide
 import com.jackpot.jackpotfront.R
 import com.jackpot.jackpotfront.databinding.ActivityAddPostsBinding
-import com.jackpot.jackpotfront.databinding.ActivityMainBinding
 import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream
