@@ -17,6 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="212dp"
         android:ems="10"
+        android:fontFamily="@font/regular"
         android:hint="나도 그랬어요"
         android:inputType="textMultiLine|textPersonName"
         android:paddingHorizontal="20dp"
