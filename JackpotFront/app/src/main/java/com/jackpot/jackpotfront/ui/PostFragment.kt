@@ -1,25 +1,24 @@
 package com.jackpot.jackpotfront.ui
 
 import android.content.Intent
-import android.animation.ValueAnimator
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import com.jackpot.jackpotfront.adapter.ListAdapterGrid
 import com.jackpot.jackpotfront.databinding.FragmentPostBinding
-import com.jackpot.jackpotfront.retrofit.data.AllPostsObject
-
+import com.jackpot.jackpotfront.retrofit.data.TestPostObject
 
 
 class PostFragment : Fragment() {
 
     lateinit var binding :FragmentPostBinding
     var userIdx: Int? = 1
+
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -27,8 +26,8 @@ class PostFragment : Fragment() {
         binding = FragmentPostBinding.inflate(layoutInflater,container,false)
         // Inflate the layout for this fragment
 
-        var testObject: ArrayList<AllPostsObject> = ArrayList()
-        var postObject: AllPostsObject = AllPostsObject(1,
+        var testObject: ArrayList<TestPostObject> = ArrayList()
+        var postObject: TestPostObject = TestPostObject(1,
             "https://hana-umc.shop/test/display/1657267165243img.jpg",
         "testStringqfi;ljqwqwfj;jiwqfj;wfq;jilqwflfuawfhawklff;lqwfl;qwjifqfwafawfajil;fwa;fjil;wf")
         testObject?.add(postObject)
@@ -49,6 +48,7 @@ class PostFragment : Fragment() {
             val addIntent = Intent(activity,AddPostsActivity::class.java)
             startActivity(addIntent)
         }
+
 
         return binding.root
     }
