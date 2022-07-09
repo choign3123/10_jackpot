@@ -10,12 +10,12 @@ data class GetMyPostObject(
     val id: String,
     val numOfPost: Int,
     val numOfPoint: Int,
-    val posts: PostsObject
+    val posts: List<PostsObject>
 )
 
 data class PostsObject (
     val postIdx: Int,
     val imgUrl: String,
     val content: String,
-    // 이모지
+    val checkEmoji: List<Boolean>
         )
