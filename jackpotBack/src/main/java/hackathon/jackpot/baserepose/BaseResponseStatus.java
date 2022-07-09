@@ -10,8 +10,8 @@ public enum BaseResponseStatus {
     /**
      * 1000 : 요청 성공
      */
-    SUCCESS(true,  "요청에 성공하였습니다.");
-
+    SUCCESS(true,  "요청에 성공하였습니다."),
+    DATABASE_ERROR(false,"데이터베이스 오류");
 
     private final boolean isSuccess;
     private final String message;
