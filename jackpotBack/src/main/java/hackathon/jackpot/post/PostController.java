@@ -5,6 +5,8 @@ import hackathon.jackpot.baserepose.BaseException;
 import hackathon.jackpot.baserepose.BaseResponse;
 import hackathon.jackpot.post.model.GetMyPostRes;
 import hackathon.jackpot.post.model.GetPostRes;
+import hackathon.jackpot.post.model.PostDeleteEmojiReq;
+import hackathon.jackpot.post.model.PostPostEmojiReq;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -72,8 +74,10 @@ public class PostController {
             return new BaseResponse(e.getStatus());
         }
     }
+
+
     //게시글 검색
-    ///posts/search?q=""&page=""
+    ///[GET] posts/search/{userIdx}?q=""&page=""
     @ResponseBody
     @GetMapping("/search/{userIdx}")
     public BaseResponse<List<GetPostRes>> searchPost(@PathVariable("userIdx") int userIdx,@RequestParam("q") String q,@RequestParam("page") int page){
@@ -87,7 +91,7 @@ public class PostController {
     }
 
     //게시글 my조회
-    //posts/my/{userIdx}?page=""
+    //[GET] posts/my/{userIdx}?page=""
     @ResponseBody
     @GetMapping("/my/{userIdx}")
     public BaseResponse<GetMyPostRes> getMyPostInfo(@PathVariable("userIdx")int userIdx,@RequestParam("page") int page){
@@ -110,4 +114,50 @@ public class PostController {
 
         return postService.displayImg(imgName);
     }
+
+    //이모지 활성화
+    //[POST] posts/emoji
+    @ResponseBody
+    @PostMapping("/emoji")
+    public BaseResponse<String> createEmoji(@RequestBody PostPostEmojiReq postPostEmojiReq){
+        try{
+            postService.createEmoji(postPostEmojiReq);
+            String result = "이모지가 선택되었습니다.";
+            return new BaseResponse<>(result);
+        }catch (BaseException exception){
+            return new BaseResponse<>(exception.getStatus());
+        }
+    }
+
+    //이모지 삭제
+    //[DELETE] posts/emoji
+    @ResponseBody
+    @DeleteMapping("/emoji")
+    public BaseResponse<String> deleteEmoji(@RequestBody PostDeleteEmojiReq postDeleteEmojiReq){
+        try{
+            postService.deleteEmoji(postDeleteEmojiReq);
+            String result = "이모지가 삭제되었습니다.";
+            return new BaseResponse<>(result);
+        }catch (BaseException exception){
+            return new BaseResponse<>(exception.getStatus());
+        }
+    }
+
+    //신고
+    //[PATCH] /posts/notify/{userIdx}?postIdx=""
+    @ResponseBody
+    @PatchMapping("/notify/{userIdx}")
+    public BaseResponse<String> notifyPost(@PathVariable("userIdx") int userIdx,@RequestParam("postIdx") int postIdx){
+        try{
+            postService.notifyPost(userIdx,postIdx);
+            String result = "신고되었습니다.";
+            return new BaseResponse<>(result);
+        }catch(BaseException exception){
+            return new BaseResponse<>(exception.getStatus());
+        }
+
+    }
+
+
+
 }
