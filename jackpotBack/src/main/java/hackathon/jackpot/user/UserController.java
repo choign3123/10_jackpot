@@ -4,6 +4,7 @@ import hackathon.jackpot.baserepose.BaseException;
 import hackathon.jackpot.baserepose.BaseResponse;
 import hackathon.jackpot.user.model.PostLoginReq;
 import hackathon.jackpot.user.model.PostLoginRes;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,6 +29,7 @@ public class UserController {
     //users/login
     @ResponseBody
     @PostMapping("/login")
+    @Operation(summary = "로그인", description = "로그인")
     public BaseResponse<PostLoginRes> loginUser(@RequestBody PostLoginReq postLoginReq){
 
         try{
