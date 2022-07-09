@@ -18,7 +18,7 @@ public enum BaseResponseStatus {
     FAIL_TO_UPLOAD_IMG(false, "이미지 저장에 실패하였습니다"),
     FAIL_TO_LOAD_IMG(false, "이미지 출력에 실패하였습니다"),
 
-    DELETE_BY_NUM_OF_NOTIFY(false,"신고 누적으로 게시글이 삭제되었습니다.");
+    DELETE_BY_NUM_OF_NOTIFY(true,"신고 누적으로 게시글이 삭제되었습니다.");
 
     private final boolean isSuccess;
     private final String message;
