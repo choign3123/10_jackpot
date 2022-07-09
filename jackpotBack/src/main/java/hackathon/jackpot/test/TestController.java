@@ -8,6 +8,7 @@ import javax.sql.DataSource;
 
 @RestController
 @RequestMapping("/test")
+@CrossOrigin(origins = "https://hana-umc.shop")
 public class TestController {
 
     private JdbcTemplate jdbcTemplate;

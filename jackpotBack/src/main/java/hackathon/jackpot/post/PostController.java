@@ -7,22 +7,16 @@ import hackathon.jackpot.post.model.GetMyPostRes;
 import hackathon.jackpot.post.model.GetPostRes;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 
 @RestController
 @RequestMapping("/posts")
+@CrossOrigin(origins = "https://hana-umc.shop")
 public class PostController {
 
     private final PostService postService;
