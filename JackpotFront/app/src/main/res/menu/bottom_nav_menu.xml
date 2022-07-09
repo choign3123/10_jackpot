@@ -18,6 +18,13 @@
         app:showAsAction="always"
         tools:ignore="AlwaysShowAction" />
     <item
+        android:id="@+id/rankingFragment"
+        android:enabled="true"
+        android:icon="@android:dra"
+        android:title="search"
+        app:showAsAction="always"
+        tools:ignore="AlwaysShowAction" />
+    <item
         android:id="@+id/myPageFragment"
         android:enabled="true"
         android:title="마이페이지"

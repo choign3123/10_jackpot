@@ -19,7 +19,7 @@
             app:queryHint="검색어를 입력하시오" />
         <ImageButton
             android:id="@+id/search_btn"
-            android:src="@drawable/baseline_home_20"
+            android:src="@drawable/baseline_search_20"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </LinearLayout>

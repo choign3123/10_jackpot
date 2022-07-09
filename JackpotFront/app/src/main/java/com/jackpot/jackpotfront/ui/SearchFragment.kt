@@ -31,7 +31,6 @@ class SearchFragment : Fragment() {
             // Retrofit 통신 자리
         }
 
-
         return binding.root
     }
 }
