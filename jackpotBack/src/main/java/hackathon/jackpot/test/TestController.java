@@ -19,7 +19,7 @@ public class TestController {
 
     @ResponseBody
     @GetMapping("/log")
-    public String test(@PathVariable int userIdx1, @PathVariable int userIdx2){
+    public String test(){
         String selectUserQuery = "select id from user where userIdx=1";
 
 

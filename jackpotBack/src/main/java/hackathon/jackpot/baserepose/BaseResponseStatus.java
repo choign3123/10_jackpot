@@ -11,7 +11,12 @@ public enum BaseResponseStatus {
      * 1000 : 요청 성공
      */
     SUCCESS(true,  "요청에 성공하였습니다."),
-    DATABASE_ERROR(false,"데이터베이스 오류");
+    DATABASE_ERROR(false,"데이터베이스 오류"),
+
+    //실패 메시지
+    NOT_FOUND_IMG(false, "이미지가 존재하지 않습니다"),
+    FAIL_TO_UPLOAD_IMG(false, "이미지 저장에 실패하였습니다"),
+    FAIL_TO_LOAD_IMG(false, "이미지 출력에 실패하였습니다");
 
     private final boolean isSuccess;
     private final String message;
