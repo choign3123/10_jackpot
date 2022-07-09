@@ -48,4 +48,11 @@ public class PostRepository {
 
     }
 
+    //게시물 생성
+    public void createPost(int userIdx, String imgUrl, String content){
+        String createPostQuery = "insert into post(userIdx, imgUrl, content) values (?, ?, ?)";
+        Object[] createPostParams = new Object[]{userIdx, imgUrl, content};
+
+        this.jdbcTemplate.update(createPostQuery, createPostParams);
+    }
 }
