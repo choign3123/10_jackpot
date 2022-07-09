@@ -9,6 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class GetPostRes {
+    private int postIdx;
     private String imgUrl;
     private String content;
     private int numOfLike;

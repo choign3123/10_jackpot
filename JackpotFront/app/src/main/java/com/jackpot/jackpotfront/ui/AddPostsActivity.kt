@@ -1,6 +1,7 @@
 package com.jackpot.jackpotfront.ui
 
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -8,10 +9,13 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
+import com.bumptech.glide.Glide
 import com.jackpot.jackpotfront.R
 import com.jackpot.jackpotfront.databinding.ActivityAddPostsBinding
 import com.jackpot.jackpotfront.databinding.ActivityMainBinding
 import java.io.File
+import java.io.FileOutputStream
+import java.io.OutputStream
 
 class AddPostsActivity : AppCompatActivity() {
     val binding by lazy { ActivityAddPostsBinding.inflate(layoutInflater) }
@@ -48,11 +52,25 @@ class AddPostsActivity : AppCompatActivity() {
                         val bitmap = BitmapFactory.decodeStream(inputStream,null,option)
                         inputStream!!.close()
                         inputStream = null
-                        bitmap?.let {
-                            binding.imgBtn.setImageBitmap(bitmap)
-                        } ?: let{
-                            Log.d("김 ","bitmap null")
-                        }
+
+                        // 파일 생성 시 주소는 앱 내장 주소에 이름은 img.jpg
+                        val myFile = File(filesDir, "img.jpg")
+                        val os : OutputStream
+                        // 파일 생성
+                        myFile.createNewFile()
+                        os = FileOutputStream(myFile)
+
+                        // 여기서 만든 myFile에 이미지 비트맵 집어넣음
+                        bitmap?.compress(Bitmap.CompressFormat.JPEG, 100, os)
+
+                        os.close()
+
+                        binding.imgBtn.setImageBitmap(bitmap)
+                        // 글라이드는 이미지 새로 고침 안됨
+//                        Glide.with(this@AddPostsActivity)
+//                            .load(myFile)
+//                            .into(binding.imgBtn)
+
                     }catch (e: Exception){
                         e.printStackTrace()
                     }
