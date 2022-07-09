@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="500dp"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="5dp">
 
@@ -11,7 +11,7 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="유저" />
 
     <ImageView
         android:id="@+id/gridViewImg"
@@ -20,9 +20,27 @@
         android:scaleType="centerCrop"
         tools:srcCompat="@tools:sample/avatars" />
 
+    <!--    즐겨찾기 애니메이션-->
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/favButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:onClick="onClickButton"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="heart.json"
+        app:lottie_loop="true" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="좋아요 개수" />
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="139dp"
-        android:text="TextView" />
+        android:text="본문" />
+
+
 </LinearLayout>
