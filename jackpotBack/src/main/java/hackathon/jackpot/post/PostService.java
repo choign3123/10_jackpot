@@ -167,23 +167,23 @@ public class PostService {
         }
 
         return new ResponseEntity<>(resource, headers, HttpStatus.OK);
-    //게시물 검색
-    public List<GetPostRes> searchPost(int userIdx,String q, int page) throws BaseException {
-        try{
-            return postRepository.searchPost(userIdx,q,page);
-        }catch (Exception exception){
-            throw new BaseException(DATABASE_ERROR);
-        }
-
     }
 
-    //게시물 my조회
-    public GetMyPostRes getMyPostInfo(int userIdx, int page) {
+    //게시글 검색
+    public List<GetPostRes> searchPost(int userIdx, String q, int page) throws BaseException {
         try{
-            return postRepository.getMyPostInfo(userIdx,page);
+            return postRepository.searchPost(userIdx, q, page);
         }catch (Exception exception){
             throw new BaseException(DATABASE_ERROR);
         }
+    }
 
+    public GetMyPostRes getMyPostInfo(int userIdx, int page) throws BaseException {
+        try{
+            return postRepository.getMyPostInfo(userIdx, page);
+        }catch(Exception exception){
+            exception.printStackTrace();
+            throw new BaseException(DATABASE_ERROR);
+        }
     }
 }

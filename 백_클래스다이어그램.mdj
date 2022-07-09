@@ -996,13 +996,30 @@
 											"height": 13,
 											"text": "-like: boolean",
 											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAGB4yFcePcmzrc=",
+											"_parent": {
+												"$ref": "AAAAAAGB4cKvmg2wW5o="
+											},
+											"model": {
+												"$ref": "AAAAAAGB4yFccvcj1nw="
+											},
+											"font": "Arial;13;0",
+											"left": 741,
+											"top": 154,
+											"width": 118,
+											"height": 13,
+											"text": "-postIdx: int",
+											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 736,
 									"top": 89,
 									"width": 128,
-									"height": 68
+									"height": 83
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -1015,7 +1032,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 736,
-									"top": 157,
+									"top": 172,
 									"width": 128,
 									"height": 10
 								},
@@ -2049,7 +2066,7 @@
 											"top": 509,
 											"width": 489.88037109375,
 											"height": 13,
-											"text": "+searchPost(q: String, page: int): BaseResponse<List<GetPostRes>>",
+											"text": "+searchPost(userIdx: int, q: String, page: int): BaseResponse<List<GetPostRes>>",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2654,7 +2671,7 @@
 											"top": 728,
 											"width": 503,
 											"height": 13,
-											"text": "+searchPost(q: String, page: int): List<GetPostRes>",
+											"text": "+searchPost(userIdx: int, q: String, page: int): List<GetPostRes>",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2985,7 +3002,7 @@
 											"top": 501,
 											"width": 486,
 											"height": 13,
-											"text": "+searchPost(q: String, page: int): List<GetPostRes>",
+											"text": "+searchPost(userIdx: int, q: String, page: int): List<GetPostRes>",
 											"horizontalAlignment": 0
 										},
 										{
@@ -3497,6 +3514,16 @@
 							"name": "like",
 							"visibility": "private",
 							"type": "boolean"
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAGB4yFccvcj1nw=",
+							"_parent": {
+								"$ref": "AAAAAAGB4cKvmQ2ocZU="
+							},
+							"name": "postIdx",
+							"visibility": "private",
+							"type": "int"
 						}
 					]
 				},
@@ -3806,8 +3833,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGB4gYwNA+EAa8="
 									},
-									"name": "q",
-									"type": "String"
+									"name": "userIdx",
+									"type": "int"
 								},
 								{
 									"_type": "UMLParameter",
@@ -3815,8 +3842,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGB4gYwNA+EAa8="
 									},
-									"name": "page",
-									"type": "int"
+									"name": "q",
+									"type": "String"
 								},
 								{
 									"_type": "UMLParameter",
@@ -3826,6 +3853,15 @@
 									},
 									"type": "BaseResponse<List<GetPostRes>>",
 									"direction": "return"
+								},
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAGB4xMECPcbSY0=",
+									"_parent": {
+										"$ref": "AAAAAAGB4gYwNA+EAa8="
+									},
+									"name": "page",
+									"type": "int"
 								}
 							]
 						},
@@ -4210,8 +4246,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGB4h6YPBEb8sk="
 									},
-									"name": "q",
-									"type": "String"
+									"name": "userIdx",
+									"type": "int"
 								},
 								{
 									"_type": "UMLParameter",
@@ -4219,8 +4255,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGB4h6YPBEb8sk="
 									},
-									"name": "page",
-									"type": "int"
+									"name": "q",
+									"type": "String"
 								},
 								{
 									"_type": "UMLParameter",
@@ -4230,6 +4266,15 @@
 									},
 									"type": "List<GetPostRes>",
 									"direction": "return"
+								},
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAGB4xMzAfce8UI=",
+									"_parent": {
+										"$ref": "AAAAAAGB4h6YPBEb8sk="
+									},
+									"name": "page",
+									"type": "int"
 								}
 							]
 						},
@@ -4544,8 +4589,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGB4ieHuhGcyTk="
 									},
-									"name": "q",
-									"type": "String"
+									"name": "userIdx",
+									"type": "int"
 								},
 								{
 									"_type": "UMLParameter",
@@ -4553,8 +4598,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGB4ieHuhGcyTk="
 									},
-									"name": "page",
-									"type": "int"
+									"name": "q",
+									"type": "String"
 								},
 								{
 									"_type": "UMLParameter",
@@ -4564,6 +4609,15 @@
 									},
 									"type": "List<GetPostRes>",
 									"direction": "return"
+								},
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAGB4xNx8vchXXQ=",
+									"_parent": {
+										"$ref": "AAAAAAGB4ieHuhGcyTk="
+									},
+									"name": "page",
+									"type": "int"
 								}
 							]
 						},
