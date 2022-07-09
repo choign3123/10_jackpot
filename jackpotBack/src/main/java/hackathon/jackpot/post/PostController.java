@@ -37,8 +37,6 @@ public class PostController {
         }
     }
 
-
-
     //게시물 전체조회
     //posts/{userIdx}?page=""
     @ResponseBody
