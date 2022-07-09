@@ -7,9 +7,14 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.jackpot.jackpotfront.R
+import com.jackpot.jackpotfront.databinding.ItemGridBinding
+import com.jackpot.jackpotfront.retrofit.data.AllPostsObject
 
-class ListAdapterGrid (val context: Context, var userIdx: Int?, val img_list: ArrayList<AllClothObject>)
+
+class ListAdapterGrid(val context: Context?, var userIdx: Int?, val img_list: ArrayList<AllPostsObject>?)
     : RecyclerView.Adapter<ListAdapterGrid.GridAdapter>() {
+
     class GridAdapter(val binding: ItemGridBinding): RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GridAdapter {
@@ -21,24 +26,24 @@ class ListAdapterGrid (val context: Context, var userIdx: Int?, val img_list: Ar
     override fun onBindViewHolder(holder: GridAdapter, position: Int) {
         val img = holder.binding.gridViewImg
 //        img.setImageURI(img_list[position].clthImgUrl.toUri())
-        Glide.with(context)
-            .load(img_list[position].clthImgUrl.toUri())
-            .thumbnail(0.1f)
-            .into(img)
+//        Glide.with(context)
+//            .load(img_list[position].imgUrl)
+//            .thumbnail(0.1f)
+//            .into(img)
 
 
 
         // 그리드 뷰에서 개별 옷 클릭 시
-        img.setOnClickListener() {
-            val intent = Intent( context ,ClothActivity::class.java)
-            intent.putExtra("userIdx", userIdx)
-            intent.putExtra("clothIdx", img_list[position]!!.clthIdx)
-
-            ContextCompat.startActivity(context, intent, null)
-        }
+//        img.setOnClickListener() {
+//            val intent = Intent( context ,ClothActivity::class.java)
+//            intent.putExtra("userIdx", userIdx)
+//            intent.putExtra("clothIdx", img_list[position]!!.clthIdx)
+//
+//            ContextCompat.startActivity(context, intent, null)
+//        }
     }
 
     override fun getItemCount(): Int {
-        return img_list.size
+        return img_list!!.size
     }
 }

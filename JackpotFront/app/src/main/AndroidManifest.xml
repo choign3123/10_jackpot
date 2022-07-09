@@ -21,9 +21,6 @@
         android:theme="@style/Theme.JackpotFront"
         tools:targetApi="31">
         <activity
-            android:name=".ui.HomeActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.LoginActivity"
             android:exported="true" >
             <intent-filter>

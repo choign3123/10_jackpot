@@ -6,7 +6,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 interface RetrofitService {
-
+    // 함수 작성 부분
 
 
     // 싱글톤
@@ -21,6 +21,7 @@ interface RetrofitService {
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
 //                .addConverterFactory(ScalarsConverterFactory.create())
+
                 .build()
                 .create(RetrofitService::class.java)
         }

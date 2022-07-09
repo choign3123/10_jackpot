@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/gridViewLayout"
     android:layout_width="match_parent"
     android:layout_height="500dp"
     android:orientation="vertical"
@@ -18,7 +17,6 @@
         android:id="@+id/gridViewImg"
         android:layout_width="match_parent"
         android:layout_height="336dp"
-        android:adjustViewBounds="true"
         android:scaleType="centerCrop"
         tools:srcCompat="@tools:sample/avatars" />
 
