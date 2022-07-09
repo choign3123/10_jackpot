@@ -84,6 +84,7 @@ public class PostController {
     public BaseResponse<List<GetPostRes>> searchPost(@PathVariable("userIdx") int userIdx,@RequestParam("q") String q,@RequestParam("page") int page){
         try{
             List<GetPostRes> getPostRes = postService.searchPost(userIdx,q,page);
+            System.out.printf("%d %s %d", userIdx, q, page);
             return new BaseResponse<>(getPostRes);
         }catch(BaseException exception){
             return new BaseResponse<>(exception.getStatus());
