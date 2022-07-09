@@ -87,6 +87,7 @@ public class PostService {
         try{
             return postRepository.getPostInfo(userIdx,page);
         }catch(Exception exception){
+            exception.printStackTrace();
             throw new BaseException(DATABASE_ERROR);
         }
 
@@ -189,7 +190,7 @@ public class PostService {
         }
     }
 
-    public void createEmoji(PostPostEmojiReq postPostEmojiReq) {
+    public void createEmoji(PostPostEmojiReq postPostEmojiReq) throws BaseException{
         try{
             postRepository.createEmoji(postPostEmojiReq);
         }catch (Exception exception){
@@ -198,7 +199,7 @@ public class PostService {
 
     }
 
-    public void deleteEmoji(PostDeleteEmojiReq postDeleteEmojiReq) {
+    public void deleteEmoji(PostDeleteEmojiReq postDeleteEmojiReq) throws BaseException{
         try{
             postRepository.deleteEmoji(postDeleteEmojiReq);
         }catch (Exception exception){
@@ -206,7 +207,7 @@ public class PostService {
         }
     }
 
-    public void notifyPost(int postIdx) {
+    public void notifyPost(int postIdx) throws BaseException{
 
     }
 }

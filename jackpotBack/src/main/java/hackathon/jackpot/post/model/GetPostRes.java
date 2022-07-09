@@ -15,5 +15,4 @@ public class GetPostRes {
     private String imgUrl;
     private String content;
     private List<Boolean> checkEmoji;
-
 }

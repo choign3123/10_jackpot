@@ -74,8 +74,10 @@ public class PostController {
             return new BaseResponse(e.getStatus());
         }
     }
+
+
     //게시글 검색
-    ///[GET] posts/search?q=""&page=""
+    ///[GET] posts/search/{userIdx}?q=""&page=""
     @ResponseBody
     @GetMapping("/search/{userIdx}")
     public BaseResponse<List<GetPostRes>> searchPost(@PathVariable("userIdx") int userIdx,@RequestParam("q") String q,@RequestParam("page") int page){
