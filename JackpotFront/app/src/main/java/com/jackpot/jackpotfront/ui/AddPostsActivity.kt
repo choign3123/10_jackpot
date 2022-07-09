@@ -29,8 +29,6 @@ class AddPostsActivity : AppCompatActivity() {
     val retro = RetrofitService.create()
 
     private val albumLauncher = albumResultLauncher()
-    lateinit var filePath: File
-    lateinit var filename: kotlin.String
     lateinit var myBitmap: Bitmap
 
     override fun onCreate(savedInstanceState: Bundle?) {
