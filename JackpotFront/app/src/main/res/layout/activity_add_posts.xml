@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <ImageButton
-        android:id="@+id/imgBtn"
+        android:id="@+id/img_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@color/teal_200"/>
@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <Button
-
+        android:id="@+id/save_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 </LinearLayout>
