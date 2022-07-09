@@ -190,7 +190,7 @@ public class PostService {
         }
     }
 
-    public void createEmoji(PostPostEmojiReq postPostEmojiReq) throws BaseException{
+    public void createEmoji(PostPostEmojiReq postPostEmojiReq) throws BaseException {
         try{
             postRepository.createEmoji(postPostEmojiReq);
         }catch (Exception exception){
@@ -207,7 +207,27 @@ public class PostService {
         }
     }
 
-    public void notifyPost(int postIdx) throws BaseException{
+    public void notifyPost(int userIdx,int postIdx) throws BaseException{
+        //post의 numOfNotify의 수를 1 올림
+        try{
+            postRepository.notifyPost(postIdx);
+        }catch(Exception exception){
+            throw new BaseException(DATABASE_ERROR);
+        }
+        //post테이블의 numOfNotify가 10이상이면 true반환 ->에러발생
+        //deletePost로 연동시킴
+        if(checkNotifyNum(postIdx)) {
+            postRepository.deletePost(userIdx,postIdx);
+            throw new BaseException(DELETE_BY_NUM_OF_NOTIFY);
+        }
+
+    }
+    public boolean checkNotifyNum(int postIdx){
+        int numONotify = postRepository.checkNotifyNum(postIdx);
+        if(numONotify>=10)
+            return true;
+        else
+            return false;
 
     }
 }
