@@ -51,6 +51,10 @@ class ListAdapterGrid(val context: Context?, var userIdx: Int?, val img_list: Ar
 //            ContextCompat.startActivity(context, intent, null)
 //        }
 
+        holder.binding.deleteIv.setOnClickListener {
+
+        }
+
         holder.binding.favButton.setOnClickListener {
 
             if(!isHearting){
