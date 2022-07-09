@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/posts")
-@CrossOrigin(origins = "https://hana-umc.shop")
+@CrossOrigin(origins = "http://hana-umc.shop")
 public class PostController {
 
     private final PostService postService;
