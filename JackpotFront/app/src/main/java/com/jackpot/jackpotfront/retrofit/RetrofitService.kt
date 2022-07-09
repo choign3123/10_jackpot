@@ -48,11 +48,11 @@ interface RetrofitService {
         @Path("userIdx") userIdx: Int?,
         @Query("q") q: String,
         @Query("page") page: Int
-    ): Call<SearchPostResult>
+    ): Call<GetAllPostResult>
 
     // 마이 게시물 조회
     @GET("/posts/my/{userIdx}")
-    fun GetMyPost(
+    fun getMyPost(
         @Path("userIdx") userIdx: Int?,
         @Query("page") page: Int
     ): Call<GetMyPostResult>

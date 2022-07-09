@@ -8,14 +8,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
+import androidx.recyclerview.widget.GridLayoutManager
 import com.jackpot.jackpotfront.R
 import com.jackpot.jackpotfront.adapter.ListAdapterGrid
 import com.jackpot.jackpotfront.databinding.FragmentPostBinding
 import com.jackpot.jackpotfront.databinding.FragmentSearchBinding
+import com.jackpot.jackpotfront.retrofit.RetrofitService
+import com.jackpot.jackpotfront.retrofit.data.GetAllPostResult
+import com.jackpot.jackpotfront.retrofit.data.SearchPostResult
+import com.jackpot.jackpotfront.retrofit.data.UserIdxObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class SearchFragment : Fragment() {
 
     private lateinit var binding:FragmentSearchBinding
+    val retro = RetrofitService.create()
 
 
     override fun onCreateView(
@@ -25,11 +34,37 @@ class SearchFragment : Fragment() {
 
         binding = FragmentSearchBinding.inflate(inflater,container,false)
         binding.searchBtn.setOnClickListener{
-            val query = binding.searchView.query
+            val query = binding.searchView.query.toString()
 
-            Log.d("query", "$query")
-            // Retrofit 통신 자리
-        }
+            Log.d("MYTAG", query)
+
+            retro.searchPost(UserIdxObject.userIdx,query,0).enqueue(object : Callback<GetAllPostResult>{
+                override fun onResponse(
+                    call: Call<GetAllPostResult>,
+                    response: Response<GetAllPostResult>
+                ) {
+                    ////// 그리드 뷰로 화면 출력 //////
+                    val listManager = GridLayoutManager(context, 1)
+                    var listAdapter =
+                        ListAdapterGrid(context, UserIdxObject.userIdx, response.body()!!.result)
+
+                    var recyclerList = binding.recyclerView.apply {
+                        setHasFixedSize(true)
+                        layoutManager = listManager
+                        adapter = listAdapter
+                    }
+                    ////// 그리드 뷰로 화면 출력 //////
+                    Log.d("MYTAG", "SUCCESS")
+                    Log.d("MYTAG", response.body()?.result.toString())
+
+                }
+
+                    override fun onFailure(call: Call<GetAllPostResult>, t: Throwable) {
+                        Log.d("MYTAG", t.message.toString())
+                        Log.d("MYTAG", "FAIL")
+                    }
+                })
+            }
 
         return binding.root
     }

@@ -10,18 +10,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <androidx.appcompat.widget.SearchView
             android:id="@+id/search_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:iconifiedByDefault="false"
             android:layout_weight="1"
+            app:iconifiedByDefault="false"
             app:queryHint="검색어를 입력하시오" />
+
         <ImageButton
             android:id="@+id/search_btn"
-            android:src="@drawable/baseline_search_20"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_search_20" />
+
     </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="681dp"
+        android:layout_gravity="bottom"
+        tools:listitem="@layout/item_grid" />
 
 </FrameLayout>
