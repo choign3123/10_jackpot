@@ -18,7 +18,7 @@ import com.jackpot.jackpotfront.retrofit.data.AllPostsObject
 class PostFragment : Fragment() {
 
     lateinit var binding :FragmentPostBinding
-    var userIdx: Int? = null
+    var userIdx: Int? = 1
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -26,18 +26,21 @@ class PostFragment : Fragment() {
         binding = FragmentPostBinding.inflate(layoutInflater,container,false)
         // Inflate the layout for this fragment
 
-        var testObject: ArrayList<AllPostsObject>? = null
-
+        var testObject: ArrayList<AllPostsObject> = ArrayList()
+        var postObject: AllPostsObject = AllPostsObject(1,
+            "https://hana-umc.shop/test/display/1657267165243img.jpg",
+        "testString")
+        testObject?.add(postObject)
 
         ////// 그리드 뷰로 화면 출력 //////
         val listManager = GridLayoutManager(context,1)
         var listAdapter = ListAdapterGrid(context, userIdx, testObject)
 
-//        var recyclerList = binding.recyclerView.apply {
-//            setHasFixedSize(true)
-//            layoutManager = listManager
-//            adapter = listAdapter
-//        }
+        var recyclerList = binding.recyclerView.apply {
+            setHasFixedSize(true)
+            layoutManager = listManager
+            adapter = listAdapter
+        }
         ////// 그리드 뷰로 화면 출력 //////
 
         binding.fab.setOnClickListener {

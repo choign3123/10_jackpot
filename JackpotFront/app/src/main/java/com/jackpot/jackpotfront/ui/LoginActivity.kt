@@ -22,6 +22,7 @@ class LoginActivity : AppCompatActivity() {
 //    val retro = RetrofitService.create()
 
 
+
     // 로그인 데이터 선언
     var id: String? = null
     var pw: String? = null

@@ -20,15 +20,6 @@
         android:scaleType="centerCrop"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <!--    즐겨찾기 애니메이션-->
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/favButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:onClick="onClickButton"
-        app:lottie_autoPlay="true"
-        app:lottie_fileName="heart.json"
-        app:lottie_loop="true" />
 
     <TextView
         android:id="@+id/textView3"
