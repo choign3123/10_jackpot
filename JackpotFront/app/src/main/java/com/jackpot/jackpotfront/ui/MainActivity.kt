@@ -8,7 +8,6 @@ import com.jackpot.jackpotfront.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     val binding by lazy {ActivityMainBinding.inflate(layoutInflater)}
-    var userIdx: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
