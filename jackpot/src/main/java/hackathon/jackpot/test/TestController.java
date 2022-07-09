@@ -1,4 +1,4 @@
-package hackerthon.jackpot.test;
+package hackathon.jackpot.test;
 
 import org.springframework.web.bind.annotation.*;
 

@@ -1,4 +1,4 @@
-package hackerthon.jackpot;
+package hackathon.jackpot;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

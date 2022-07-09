@@ -1,4 +1,4 @@
-package hackerthon.jackpot.baserepose;
+package hackathon.jackpot.baserepose;
 
 import lombok.Getter;
 import lombok.Setter;

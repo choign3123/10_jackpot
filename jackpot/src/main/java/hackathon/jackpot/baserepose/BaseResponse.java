@@ -1,4 +1,4 @@
-package hackerthon.jackpot.baserepose;
+package hackathon.jackpot.baserepose;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
