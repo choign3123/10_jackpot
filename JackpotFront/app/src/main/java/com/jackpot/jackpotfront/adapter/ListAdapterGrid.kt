@@ -14,6 +14,13 @@ import com.jackpot.jackpotfront.R
 import com.jackpot.jackpotfront.databinding.ItemGridBinding
 import com.jackpot.jackpotfront.retrofit.data.GetAllPostObject
 import com.jackpot.jackpotfront.retrofit.data.GetAllPostResult
+import com.jackpot.jackpotfront.retrofit.RetrofitService
+import com.jackpot.jackpotfront.retrofit.data.DeletePostResult
+import com.jackpot.jackpotfront.retrofit.data.TestPostObject
+import com.jackpot.jackpotfront.retrofit.data.UserIdxObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class ListAdapterGrid(val context: Context?, var userIdx: Int?, val img_list: List<GetAllPostObject>)
@@ -51,6 +58,23 @@ class ListAdapterGrid(val context: Context?, var userIdx: Int?, val img_list: Li
 //
 //            ContextCompat.startActivity(context, intent, null)
 //        }
+
+        holder.binding.deleteIv.setOnClickListener {
+            Log.d("delete btn", "눌렸음 ")
+            val retrofit = RetrofitService.create()
+            val service = retrofit.deletePost(UserIdxObject.userIdx,img_list[position].postIdx).enqueue(object : Callback<DeletePostResult>{
+                override fun onResponse(
+                    call: Call<DeletePostResult>,
+                    response: Response<DeletePostResult>
+                ) {
+                    Log.d("삭제 성공","{${response.body()}}")
+                }
+
+                override fun onFailure(call: Call<DeletePostResult>, t: Throwable) {
+                    Log.d("삭제 실패 래요 ","실패한 삭제 ")
+                }
+            })
+        }
 
         holder.binding.favButton.setOnClickListener {
 

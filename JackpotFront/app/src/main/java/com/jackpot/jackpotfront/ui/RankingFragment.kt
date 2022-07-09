@@ -19,6 +19,7 @@ class RankingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentRankingBinding.inflate(layoutInflater,container,false)
+
         return binding.root
     }
 }
