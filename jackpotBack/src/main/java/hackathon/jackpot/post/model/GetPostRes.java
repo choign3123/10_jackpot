@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -12,6 +14,5 @@ public class GetPostRes {
     private int postIdx;
     private String imgUrl;
     private String content;
-    private int numOfLike;
-    private boolean checkLike;
+    private List<Boolean> checkEmoji;
 }

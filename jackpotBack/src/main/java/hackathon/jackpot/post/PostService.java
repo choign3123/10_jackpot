@@ -5,6 +5,8 @@ import hackathon.jackpot.baserepose.BaseException;
 import hackathon.jackpot.baserepose.BaseResponseStatus;
 import hackathon.jackpot.post.model.GetMyPostRes;
 import hackathon.jackpot.post.model.GetPostRes;
+import hackathon.jackpot.post.model.PostDeleteEmojiReq;
+import hackathon.jackpot.post.model.PostPostEmojiReq;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
@@ -85,6 +87,7 @@ public class PostService {
         try{
             return postRepository.getPostInfo(userIdx,page);
         }catch(Exception exception){
+            exception.printStackTrace();
             throw new BaseException(DATABASE_ERROR);
         }
 
@@ -185,5 +188,46 @@ public class PostService {
             exception.printStackTrace();
             throw new BaseException(DATABASE_ERROR);
         }
+    }
+
+    public void createEmoji(PostPostEmojiReq postPostEmojiReq) throws BaseException {
+        try{
+            postRepository.createEmoji(postPostEmojiReq);
+        }catch (Exception exception){
+            throw new BaseException(DATABASE_ERROR);
+        }
+
+    }
+
+    public void deleteEmoji(PostDeleteEmojiReq postDeleteEmojiReq) throws BaseException{
+        try{
+            postRepository.deleteEmoji(postDeleteEmojiReq);
+        }catch (Exception exception){
+            throw new BaseException(DATABASE_ERROR);
+        }
+    }
+
+    public void notifyPost(int userIdx,int postIdx) throws BaseException{
+        //post의 numOfNotify의 수를 1 올림
+        try{
+            postRepository.notifyPost(postIdx);
+        }catch(Exception exception){
+            throw new BaseException(DATABASE_ERROR);
+        }
+        //post테이블의 numOfNotify가 10이상이면 true반환 ->에러발생
+        //deletePost로 연동시킴
+        if(checkNotifyNum(postIdx)) {
+            postRepository.deletePost(userIdx,postIdx);
+            throw new BaseException(DELETE_BY_NUM_OF_NOTIFY);
+        }
+
+    }
+    public boolean checkNotifyNum(int postIdx){
+        int numONotify = postRepository.checkNotifyNum(postIdx);
+        if(numONotify>=10)
+            return true;
+        else
+            return false;
+
     }
 }

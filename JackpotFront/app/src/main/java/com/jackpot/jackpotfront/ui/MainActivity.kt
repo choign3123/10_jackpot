@@ -14,8 +14,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        userIdx = intent.getIntExtra("userIdx", 0)
-
         initBottomNavigation()
     }
 

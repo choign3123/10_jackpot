@@ -1,17 +1,15 @@
 package com.jackpot.jackpotfront.ui
 
-import android.animation.ValueAnimator
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.Toast
 import com.jackpot.jackpotfront.databinding.ActivityLoginBinding
-import com.jackpot.jackpotfront.databinding.ActivityMainBinding
 import com.jackpot.jackpotfront.retrofit.RetrofitService
 import com.jackpot.jackpotfront.retrofit.data.LoginInfo
 import com.jackpot.jackpotfront.retrofit.data.LoginResult
+import com.jackpot.jackpotfront.retrofit.data.UserIdxObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -45,8 +43,10 @@ class LoginActivity : AppCompatActivity() {
                     Log.d("MYTAG", response.body().toString())
 
                     if(response.body()?.isSuccess == true) {
+
+                        UserIdxObject.userIdx = response.body()?.result?.userIdx
+
                         val mainIntent = Intent(this@LoginActivity, MainActivity::class.java)
-                        mainIntent.putExtra("userIdx", response.body()?.result?.userIdx)
                         startActivity(mainIntent)
 
                         Log.d("MYTAG", "SUCCESS")

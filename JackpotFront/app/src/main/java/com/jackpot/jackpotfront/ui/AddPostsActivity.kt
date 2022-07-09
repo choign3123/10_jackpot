@@ -11,15 +11,27 @@ import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
 import com.jackpot.jackpotfront.R
 import com.jackpot.jackpotfront.databinding.ActivityAddPostsBinding
+import com.jackpot.jackpotfront.retrofit.RetrofitService
+import com.jackpot.jackpotfront.retrofit.data.PostPostResult
+import com.jackpot.jackpotfront.retrofit.data.UserIdxObject
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream
 
 class AddPostsActivity : AppCompatActivity() {
     val binding by lazy { ActivityAddPostsBinding.inflate(layoutInflater) }
+    val retro = RetrofitService.create()
+
     private val albumLauncher = albumResultLauncher()
     lateinit var filePath: File
     lateinit var filename: kotlin.String
+    lateinit var myBitmap: Bitmap
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +43,43 @@ class AddPostsActivity : AppCompatActivity() {
             albumLauncher.launch(photointent)
         }
         binding.saveBtn.setOnClickListener {
-            //Retrofit 통신 필요
+
+            // 파일 생성 시 주소는 앱 내장 주소에 이름은 img.jpg
+            val myFile = File(filesDir, "img.jpg")
+            val os : OutputStream
+            // 파일 생성
+            myFile.createNewFile()
+            os = FileOutputStream(myFile)
+
+            // 여기서 만든 myFile에 이미지 비트맵 집어넣음
+            myBitmap.compress(Bitmap.CompressFormat.JPEG, 100, os)
+
+            os.close()
+
+            // make requestBody
+            var requestBody = RequestBody.create(MediaType.parse("image/*"), myFile)
+            Log.d("MYTAG","requsetBody : "+requestBody.toString())
+            // make Multipart.Part
+            var file = MultipartBody.Part.createFormData("img", myFile.name ,requestBody)
+            Log.d("MYTAG","file : "+file)
+
+            // 본문 requestBody로
+            var requestBody2 = RequestBody.create(MediaType.parse("text/plain"), binding.editText.text.toString())
+            Log.d("MYTAG","본문 text : "+binding.editText.text.toString())
+            Log.d("MYTAG","useridx text : "+UserIdxObject.userIdx.toString())
+
+
+            // 레트로핏 통신
+            retro.postPost(UserIdxObject.userIdx, file, requestBody2).enqueue(object : Callback<PostPostResult> {
+                override fun onResponse(call: Call<PostPostResult>, response: Response<PostPostResult>) {
+                    Log.d("MYTAG",response.body().toString())
+                }
+
+                override fun onFailure(call: Call<PostPostResult>, t: Throwable) {
+                    Log.d("MYTAG",t.message.toString())
+                    Log.d("MYTAG","FAIL")
+                }
+            })
         }
     }
     private fun albumResultLauncher() =
@@ -51,17 +99,7 @@ class AddPostsActivity : AppCompatActivity() {
                         inputStream!!.close()
                         inputStream = null
 
-                        // 파일 생성 시 주소는 앱 내장 주소에 이름은 img.jpg
-                        val myFile = File(filesDir, "img.jpg")
-                        val os : OutputStream
-                        // 파일 생성
-                        myFile.createNewFile()
-                        os = FileOutputStream(myFile)
-
-                        // 여기서 만든 myFile에 이미지 비트맵 집어넣음
-                        bitmap?.compress(Bitmap.CompressFormat.JPEG, 100, os)
-
-                        os.close()
+                        myBitmap = bitmap!!
 
                         binding.imgBtn.setImageBitmap(bitmap)
                         // 글라이드는 이미지 새로 고침 안됨
