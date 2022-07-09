@@ -69,18 +69,19 @@ public class PostRepository {
 
     //게시물 검색
     public List<GetPostRes> searchPost(int userIdx, String q, int page) {
-        String searchPostQuery = "select post.postIdx, imgUrl, content,\n" +
+        String searchPostQuery = "select postIdx, imgUrl, content,\n" +
                 "        (select exists(select postLikeIdx from postLike where userIdx = ? and postIdx = post.postIdx and postLike.emogiIdx=0)) as checkEm0,\n" +
                 "        (select exists(select postLikeIdx from postLike where userIdx = ? and postIdx = post.postIdx and postLike.emogiIdx=1)) as checkEm1,\n" +
                 "        (select exists(select postLikeIdx from postLike where userIdx = ? and postIdx = post.postIdx and postLike.emogiIdx=2)) as checkEm2,\n" +
                 "        (select exists(select postLikeIdx from postLike where userIdx = ? and postIdx = post.postIdx and postLike.emogiIdx=3)) as checkEm3\n" +
                 "from post\n" +
-                "where post.content like '%나에게%'\n" +
+                "where post.content like '%"+ q +"%'\n" +
                 "order by createdAt desc, postIdx desc\n" +
                 "limit ?,?";
+        System.out.println(searchPostQuery);
         Object[] searchPostParam = new Object[]{userIdx,userIdx,userIdx,userIdx, page, PAGE_SIZE};
         return this.jdbcTemplate.query(searchPostQuery, (rs, rowNum) -> new GetPostRes(
-                rs.getInt("post.postIdx"),
+                rs.getInt("postIdx"),
                 rs.getString("imgUrl"),
                 rs.getString("content"),
                 Arrays.asList(rs.getBoolean("checkEm0"), rs.getBoolean("checkEm1"),
