@@ -19,7 +19,7 @@ import retrofit2.Response
 class LoginActivity : AppCompatActivity() {
 
     val binding by lazy { ActivityLoginBinding.inflate(layoutInflater)}
-//    val retro = RetrofitService.create()
+    val retro = RetrofitService.create()
 
 
 
@@ -33,29 +33,38 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.loginBtn.setOnClickListener {
-            id = binding.idText.toString()
-            pw = binding.pwdTxt.toString()
+            id = binding.editText1.text.toString()
+            pw = binding.editText2.text.toString()
             loginData = LoginInfo(id, pw)
 
-//            retro.postLogin(loginData).enqueue(object: Callback<LoginResult> {
-//                override fun onResponse(call: Call<LoginResult>, response: Response<LoginResult>) {
-//                    val mainIntent = Intent(this@LoginActivity, MainActivity::class.java)
-//                    mainIntent.putExtra("userIdx", response.body()?.result?.userIdx)
-//                    startActivity(mainIntent)
-//                }
-//
-//                override fun onFailure(call: Call<LoginResult>, t: Throwable) {
-//                    Log.d("MYTAG",t.message.toString())
-//                    Log.d("MYTAG","FAIL")
-//
-//                    Toast.makeText(this@LoginActivity, "FAIL!!!", Toast.LENGTH_SHORT)
-//                        .show()
-//                }
-//
-//            })
-            val mainIntent = Intent(this@LoginActivity, MainActivity::class.java)
-            startActivity(mainIntent)
+            retro.postLogin(loginData).enqueue(object: Callback<LoginResult> {
+                override fun onResponse(call: Call<LoginResult>, response: Response<LoginResult>) {
 
+                    Log.d("MYTAG", id!!)
+                    Log.d("MYTAG", pw!!)
+                    Log.d("MYTAG", response.body().toString())
+
+                    if(response.body()?.isSuccess == true) {
+                        val mainIntent = Intent(this@LoginActivity, MainActivity::class.java)
+                        mainIntent.putExtra("userIdx", response.body()?.result?.userIdx)
+                        startActivity(mainIntent)
+
+                        Log.d("MYTAG", "SUCCESS")
+
+                        Toast.makeText(this@LoginActivity, "SUCCESS!!!", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                }
+
+                override fun onFailure(call: Call<LoginResult>, t: Throwable) {
+                    Log.d("MYTAG",t.message.toString())
+                    Log.d("MYTAG","FAIL")
+
+                    Toast.makeText(this@LoginActivity, "FAIL!!!", Toast.LENGTH_SHORT)
+                        .show()
+                }
+
+            })
         }
     }
 }

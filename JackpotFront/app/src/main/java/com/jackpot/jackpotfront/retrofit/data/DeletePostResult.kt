@@ -1,6 +1,7 @@
 package com.jackpot.jackpotfront.retrofit.data
 
-data class PostResult(
+data class DeletePostResult(
     val isSuccess: Boolean,
+    val message : String,
     val result: String
 )

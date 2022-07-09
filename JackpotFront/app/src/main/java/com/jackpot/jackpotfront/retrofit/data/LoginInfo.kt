@@ -2,11 +2,12 @@ package com.jackpot.jackpotfront.retrofit.data
 
 data class LoginInfo(
     val id: String?,
-    val pw: String?
+    val password: String?
 )
 
 data class LoginResult(
     val isSuccess: Boolean,
+    val message: String,
     val result: LoginObject
 )
 

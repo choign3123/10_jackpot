@@ -2,28 +2,27 @@ package com.jackpot.jackpotfront.adapter
 
 import android.animation.ValueAnimator
 import android.content.Context
-import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.airbnb.lottie.LottieAnimationView
 import com.bumptech.glide.Glide
 import com.jackpot.jackpotfront.R
-import com.jackpot.jackpotfront.databinding.ActivityLoginBinding
 import com.jackpot.jackpotfront.databinding.ItemGridBinding
-import com.jackpot.jackpotfront.retrofit.data.AllPostsObject
+import com.jackpot.jackpotfront.retrofit.data.TestPostObject
 
 
-class ListAdapterGrid(val context: Context?, var userIdx: Int?, val img_list: ArrayList<AllPostsObject>)
+class ListAdapterGrid(val context: Context?, var userIdx: Int?, val img_list: ArrayList<TestPostObject>)
     : RecyclerView.Adapter<ListAdapterGrid.GridAdapter>() {
 
     class GridAdapter(val binding: ItemGridBinding): RecyclerView.ViewHolder(binding.root)
 
     // 즐겨찾기 애니메이션
-    private var isHearting: Boolean = false
+    var isHearting: Boolean = false
+    lateinit var lottie: LottieAnimationView
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GridAdapter {
@@ -40,7 +39,7 @@ class ListAdapterGrid(val context: Context?, var userIdx: Int?, val img_list: Ar
             .thumbnail(0.1f)
             .into(img)
 
-        holder.binding.content.text = img_list[position].contents
+        holder.binding.content.text = img_list[position].content
         setViewMore(holder.binding.content,holder.binding.viewMore)
 
         // 그리드 뷰에서 개별 옷 클릭 시
@@ -52,8 +51,36 @@ class ListAdapterGrid(val context: Context?, var userIdx: Int?, val img_list: Ar
 //            ContextCompat.startActivity(context, intent, null)
 //        }
 
+        holder.binding.favButton.setOnClickListener {
 
+            if(!isHearting){
+                //기본이 false이므로 false가 아닐때 실행한다.
+                //애니메이션의 커스텀
+                //0f가 0퍼센트, 1F가 100퍼센트
+                //ofFloat(시작지점, 종료지점).setDuration(지속시간)
+                // Custom animation speed or duration.
+                val animator = ValueAnimator.ofFloat(0f, 0.5f).setDuration(500)
+                animator.addUpdateListener {
+                    holder.binding.favButton.progress = it.animatedValue as Float
+                }
+                animator.start()
+                isHearting = true // 그리고 트루로 바꾼다.
+                Log.d("MYTAG", "MainActivity - onClickButton() called / 좋아요 버튼이 클릭됨")
+            }else{
+                //트루일때가 실행된다.
+                val animator = ValueAnimator.ofFloat(0.5f, 1f).setDuration(500)
+                animator.addUpdateListener {
+                    holder.binding.favButton.progress = it.animatedValue as Float
+                }
+                animator.start()
+                isHearting = false // 다시 false로 된다.
+                Log.d("MYTAG", "MainActivity - onClickButton() called / 좋아요 버튼이 꺼짐")
+            }
+
+            Log.d("MYTAG", "어댑터에서는.. " + isHearting.toString())
+        }
     }
+
 
     override fun getItemCount(): Int {
         return img_list!!.size
