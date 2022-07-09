@@ -23,7 +23,6 @@ class PostFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         var testObject: ArrayList<AllPostsObject>? = null
 
 
