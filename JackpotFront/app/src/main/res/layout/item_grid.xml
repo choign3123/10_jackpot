@@ -41,7 +41,7 @@
     <!--    즐겨찾기 애니메이션-->
 
     <LinearLayout
-        android:layout_width="249dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal">
 
@@ -72,6 +72,12 @@
             android:layout_height="50dp"
             android:scaleType="centerCrop"
             android:src="@drawable/img23" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1" />
 
         <ImageButton
             android:id="@+id/imageView"
