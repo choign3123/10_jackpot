@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.LoginActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:gravity="center">
 
     <EditText
         android:id="@+id/editText1"
@@ -22,6 +22,15 @@
         android:ems="10"
         android:hint="PW"
         android:inputType="textPersonName" />
+        android:minWidth="@dimen/custom_min_width"
+        android:maxWidth="@dimen/custom_max_width"
+        android:hint="pwd">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/login_btn"

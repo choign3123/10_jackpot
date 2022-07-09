@@ -61,6 +61,10 @@
         android:text="본문"
         android:textSize="20dp" />
 
+        android:text="본문"
+        android:maxLines="2"
+        android:textSize="20dp"
+        android:ellipsize="end"/>
     <TextView
         android:id="@+id/view_more"
         android:layout_width="wrap_content"
