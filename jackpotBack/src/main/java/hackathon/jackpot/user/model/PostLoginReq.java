@@ -12,5 +12,5 @@ import lombok.Setter;
 @NoArgsConstructor
 public class PostLoginReq {
     private String id;
-    private String pw;
+    private String password;
 }

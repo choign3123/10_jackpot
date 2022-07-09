@@ -19,6 +19,7 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
+    //로그인
     public PostLoginRes loginUser(PostLoginReq postLoginReq) throws BaseException {
         try{
             return userRepository.selectUser(postLoginReq);

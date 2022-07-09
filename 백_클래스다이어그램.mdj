@@ -346,7 +346,7 @@
 											"top": 101,
 											"width": 126,
 											"height": 13,
-											"text": "-pw: String",
+											"text": "-password: String",
 											"horizontalAlignment": 0
 										}
 									],
@@ -2015,7 +2015,7 @@
 											"top": 479,
 											"width": 489.88037109375,
 											"height": 13,
-											"text": "+deletePost(userIdx: int, post: int): BaseResponse<String>",
+											"text": "+deletePost(userIdx: int, postIdx: int): BaseResponse<String>",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2536,13 +2536,31 @@
 											"underline": true,
 											"text": "-MAXNOTIFYNUM: int = 10",
 											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAGB4t1LcgXBbfE=",
+											"_parent": {
+												"$ref": "AAAAAAGB4g1n4xA3R8k="
+											},
+											"model": {
+												"$ref": "AAAAAAGB4t1LYgW+IrY="
+											},
+											"font": "Arial;13;0",
+											"left": 573,
+											"top": 645,
+											"width": 503,
+											"height": 13,
+											"underline": true,
+											"text": "-PAGESIZE: int = 10",
+											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 568,
 									"top": 625,
 									"width": 513,
-									"height": 23
+									"height": 38
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -2565,7 +2583,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 573,
-											"top": 653,
+											"top": 668,
 											"width": 503,
 											"height": 13,
 											"text": "+createPost(userIdx: int, img: MultipartFile, content: String): void",
@@ -2582,7 +2600,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 573,
-											"top": 668,
+											"top": 683,
 											"width": 503,
 											"height": 13,
 											"text": "+uploadImg(img: MultipartFile): String",
@@ -2599,7 +2617,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 573,
-											"top": 683,
+											"top": 698,
 											"width": 503,
 											"height": 13,
 											"text": "+deletePost(userIdx: int, postIdx: int): void",
@@ -2616,7 +2634,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 573,
-											"top": 698,
+											"top": 713,
 											"width": 503,
 											"height": 13,
 											"text": "+getPostInfo(userIdx: int, page: int): List<GetPostRes>",
@@ -2633,7 +2651,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 573,
-											"top": 713,
+											"top": 728,
 											"width": 503,
 											"height": 13,
 											"text": "+searchPost(q: String, page: int): List<GetPostRes>",
@@ -2650,7 +2668,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 573,
-											"top": 728,
+											"top": 743,
 											"width": 503,
 											"height": 13,
 											"text": "+getMyPostInfo(userIdx: int, page: int): GetMyPostRes",
@@ -2667,7 +2685,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 573,
-											"top": 743,
+											"top": 758,
 											"width": 503,
 											"height": 13,
 											"text": "+createLike(postPostLikeReq: PostPostLikeReq): PostLikeRes",
@@ -2684,7 +2702,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 573,
-											"top": 758,
+											"top": 773,
 											"width": 503,
 											"height": 13,
 											"text": "+deleteLike(postDeleteLikeReq: PostDeleteLikeReq): PostLikeRes",
@@ -2701,7 +2719,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 573,
-											"top": 773,
+											"top": 788,
 											"width": 503,
 											"height": 13,
 											"text": "+notifyPost(postIdx: int): void",
@@ -2718,7 +2736,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 573,
-											"top": 788,
+											"top": 803,
 											"width": 503,
 											"height": 13,
 											"text": "+checkNotifyNum(postIdx: int): boolean",
@@ -2727,7 +2745,7 @@
 									],
 									"font": "Arial;13;0",
 									"left": 568,
-									"top": 648,
+									"top": 663,
 									"width": 513,
 									"height": 158
 								},
@@ -2769,7 +2787,7 @@
 							"left": 568,
 							"top": 600,
 							"width": 513,
-							"height": 206,
+							"height": 221,
 							"nameCompartment": {
 								"$ref": "AAAAAAGB4g1n4xAyoc0="
 							},
@@ -3168,7 +3186,7 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"width": 80.9072265625,
+											"width": 85.0966796875,
 											"height": 13,
 											"text": "(from Model1)"
 										},
@@ -3368,7 +3386,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGB4b5wkQy5pP8="
 							},
-							"name": "pw",
+							"name": "password",
 							"visibility": "private",
 							"type": "String"
 						}
@@ -3723,7 +3741,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGB4gMBTw9nmMk="
 									},
-									"name": "post",
+									"name": "postIdx",
 									"type": "int"
 								},
 								{
@@ -4011,6 +4029,18 @@
 								"$ref": "AAAAAAGB4g1n4hAvF7w="
 							},
 							"name": "MAXNOTIFYNUM",
+							"visibility": "private",
+							"isStatic": true,
+							"type": "int",
+							"defaultValue": "10"
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAGB4t1LYgW+IrY=",
+							"_parent": {
+								"$ref": "AAAAAAGB4g1n4hAvF7w="
+							},
+							"name": "PAGESIZE",
 							"visibility": "private",
 							"isStatic": true,
 							"type": "int",

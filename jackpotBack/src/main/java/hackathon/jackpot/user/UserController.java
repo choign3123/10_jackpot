@@ -7,6 +7,8 @@ import hackathon.jackpot.user.model.PostLoginRes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.sql.DataSource;
+
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -21,6 +23,9 @@ public class UserController {
         this.userRepository = userRepository;
     }
 
+
+    //로그인
+    //users/login
     @ResponseBody
     @PostMapping("/login")
     public BaseResponse<PostLoginRes> loginUser(@RequestBody PostLoginReq postLoginReq){
