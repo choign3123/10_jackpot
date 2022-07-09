@@ -23,6 +23,7 @@ class PostFragment : Fragment() {
     ): View? {
         binding = FragmentPostBinding.inflate(layoutInflater,container,false)
         // Inflate the layout for this fragment
+
         var testObject: ArrayList<AllPostsObject>? = null
 
 

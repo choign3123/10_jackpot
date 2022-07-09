@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.LoginActivity"
     android:orientation="vertical">
 
@@ -41,5 +42,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
+<!--    즐겨찾기 애니메이션-->
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/favButton"
+        app:lottie_fileName="favorite.json"
+        app:lottie_loop="false"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:onClick="onClickButton" />
 
 </LinearLayout>

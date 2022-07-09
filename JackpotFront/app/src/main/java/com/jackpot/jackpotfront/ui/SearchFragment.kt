@@ -18,6 +18,7 @@ class SearchFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         binding = FragmentSearchBinding.inflate(inflater,container,false)
         binding.searchBtn.setOnClickListener{
             val query = binding.searchView.query
@@ -26,6 +27,7 @@ class SearchFragment : Fragment() {
             // Retrofit 통신 자리
         }
         return binding.root
+        return inflater.inflate(R.layout.fragment_search, container, false)
     }
 
 }
