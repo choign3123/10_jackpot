@@ -37,10 +37,21 @@
         android:text="좋아요 개수" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="139dp"
-        android:text="본문" />
+        android:text="본문"
+        android:maxLines="5"
+        android:ellipsize="end"
+        android:textColor="@color/black"/>
+    <TextView
+        android:id="@+id/view_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="더보기"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/content"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </LinearLayout>
