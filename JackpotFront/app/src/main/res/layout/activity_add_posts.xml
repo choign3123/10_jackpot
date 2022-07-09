@@ -13,7 +13,7 @@
         android:src="@color/teal_200" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/edit_text"
         android:layout_width="match_parent"
         android:layout_height="212dp"
         android:ems="10"
