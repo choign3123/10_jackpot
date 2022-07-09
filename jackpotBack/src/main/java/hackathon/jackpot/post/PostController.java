@@ -141,11 +141,13 @@ public class PostController {
         }
     }
 
+    //신고
+    //[PATCH] /posts/notify/{userIdx}?postIdx=""
     @ResponseBody
-    @PatchMapping("/notify/{postIdx}")
-    public BaseResponse<String> notifyPost(@PathVariable int postIdx){
+    @PatchMapping("/notify/{userIdx}")
+    public BaseResponse<String> notifyPost(@PathVariable("userIdx") int userIdx,@RequestParam("postIdx") int postIdx){
         try{
-            postService.notifyPost(postIdx);
+            postService.notifyPost(userIdx,postIdx);
             String result = "신고되었습니다.";
             return new BaseResponse<>(result);
         }catch(BaseException exception){

@@ -109,14 +109,29 @@ public class PostRepository {
         }
 
     public void createEmoji(PostPostEmojiReq postPostEmojiReq) {
-        String createEmojiQuery = "insert into ";
-        Object[] createEmojiParam = new Object[]{postPostEmojiReq.getUserIdx(),postPostEmojiReq.getPostIdx(),postPostEmojiReq.getEmojiIdx()};
+        String createEmojiQuery = "insert into postLike(postIdx, userIdx, emogiIdx) values (?,?,?)";
+        Object[] createEmojiParam = new Object[]{postPostEmojiReq.getPostIdx(),postPostEmojiReq.getUserIdx(),postPostEmojiReq.getEmojiIdx()};
+        this.jdbcTemplate.update(createEmojiQuery,createEmojiParam);
 
     }
 
     public void deleteEmoji(PostDeleteEmojiReq postDeleteEmojiReq) {
-        String deleteEmojiQuery = "";
-        Object[] deleteEmojiParam = new Object[]{postDeleteEmojiReq.getUserIdx(),postDeleteEmojiReq.getPostIdx(),postDeleteEmojiReq.}
+        String deleteEmojiQuery = "delete from postLike where userIdx=? and postIdx=? and emogiIdx=?";
+        Object[] deleteEmojiParam = new Object[]{postDeleteEmojiReq.getUserIdx(),postDeleteEmojiReq.getPostIdx(),postDeleteEmojiReq.getEmojiIdx()};
+        this.jdbcTemplate.update(deleteEmojiQuery,deleteEmojiParam);
+    }
 
+
+    public void notifyPost(int postIdx) {
+        String notifyPostQuery = "update post set numOfNotify = post.numOfNotify + 1 where postIdx=?";
+        this.jdbcTemplate.update(notifyPostQuery,postIdx);
+    }
+
+    public int checkNotifyNum(int postIdx) {
+        String checkNotifyNumQuery = "select numOfNotify\n" +
+                "from post\n" +
+                "where postIdx=?;";
+        int notifyNum = this.jdbcTemplate.queryForObject(checkNotifyNumQuery,int.class,postIdx);
+        return notifyNum;
     }
 }
