@@ -3,6 +3,7 @@ package hackathon.jackpot.post;
 
 import hackathon.jackpot.baserepose.BaseException;
 import hackathon.jackpot.baserepose.BaseResponseStatus;
+import hackathon.jackpot.post.model.GetMyPostRes;
 import hackathon.jackpot.post.model.GetPostRes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,4 +43,24 @@ public class PostService {
 
     }
 
+
+    //게시물 검색
+    public List<GetPostRes> searchPost(int userIdx,String q, int page) throws BaseException {
+        try{
+            return postRepository.searchPost(userIdx,q,page);
+        }catch (Exception exception){
+            throw new BaseException(DATABASE_ERROR);
+        }
+
+    }
+
+    //게시물 my조회
+    public GetMyPostRes getMyPostInfo(int userIdx, int page) {
+        try{
+            return postRepository.getMyPostInfo(userIdx,page);
+        }catch (Exception exception){
+            throw new BaseException(DATABASE_ERROR);
+        }
+
+    }
 }
