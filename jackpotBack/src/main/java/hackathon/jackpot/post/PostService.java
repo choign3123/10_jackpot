@@ -5,6 +5,8 @@ import hackathon.jackpot.baserepose.BaseException;
 import hackathon.jackpot.baserepose.BaseResponseStatus;
 import hackathon.jackpot.post.model.GetMyPostRes;
 import hackathon.jackpot.post.model.GetPostRes;
+import hackathon.jackpot.post.model.PostDeleteEmojiReq;
+import hackathon.jackpot.post.model.PostPostEmojiReq;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
@@ -185,5 +187,26 @@ public class PostService {
             exception.printStackTrace();
             throw new BaseException(DATABASE_ERROR);
         }
+    }
+
+    public void createEmoji(PostPostEmojiReq postPostEmojiReq) {
+        try{
+            postRepository.createEmoji(postPostEmojiReq);
+        }catch (Exception exception){
+            throw new BaseException(DATABASE_ERROR);
+        }
+
+    }
+
+    public void deleteEmoji(PostDeleteEmojiReq postDeleteEmojiReq) {
+        try{
+            postRepository.deleteEmoji(postDeleteEmojiReq);
+        }catch (Exception exception){
+            throw new BaseException(DATABASE_ERROR);
+        }
+    }
+
+    public void notifyPost(int postIdx) {
+
     }
 }

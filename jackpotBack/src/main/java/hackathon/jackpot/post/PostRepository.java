@@ -3,6 +3,8 @@ package hackathon.jackpot.post;
 
 import hackathon.jackpot.post.model.GetMyPostRes;
 import hackathon.jackpot.post.model.GetPostRes;
+import hackathon.jackpot.post.model.PostDeleteEmojiReq;
+import hackathon.jackpot.post.model.PostPostEmojiReq;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -34,7 +36,7 @@ public class PostRepository {
 
     //게시물전체조회
     public List<GetPostRes> getPostInfo(int userIdx, int page) {
-        String getPostInfoQuery = "select post.postIdx, imgUrl, content, if(pl.cnt is null, 0, pl.cnt) as numOfLike, (select exists(select postLikeIdx from postLike where userIdx = ? and postIdx = post.postIdx)) as checkLike\n" +
+          String getPostInfoQuery = "select post.postIdx, imgUrl, content, if(pl.cnt is null, 0, pl.cnt) as numOfLike, (select exists(select postLikeIdx from postLike where userIdx = ? and postIdx = post.postIdx)) as checkLike\n" +
                 "from post as post\n" +
                 "    left join (select postIdx, count(*) as cnt from postLike group by postIdx) as pl on pl.postIdx = post.postIdx\n" +
                 "order by createdAt desc,postIdx desc limit ?,?";
@@ -44,8 +46,7 @@ public class PostRepository {
                         rs.getInt("post.postIdx"),
                         rs.getString("imgUrl"),
                         rs.getString("content"),
-                        rs.getInt("numOfLike"),
-                        rs.getBoolean("checkLike")
+
                 ), getPostinfoQuery);
 
     }
@@ -69,13 +70,14 @@ public class PostRepository {
                     rs.getInt("post.postIdx"),
                     rs.getString("imgUrl"),
                     rs.getString("content"),
-                    rs.getInt("numOfLike"),
-                    rs.getBoolean("checkLike")
+
             ), searchPostParam);
         }
 
         //게시글 my조회
         public GetMyPostRes getMyPostInfo(int userIdx,int page){
+
+
             String getPostQuery = "select post.postIdx, imgUrl, content, if(pl.cnt is null, 0, pl.cnt) as numOfLike, (select exists(select postLikeIdx from postLike where userIdx = ? and postIdx = post.postIdx)) as checkLike\n" +
                     "from post as post\n" +
                     "    left join (select postIdx, count(*) as cnt from postLike group by postIdx) as pl on pl.postIdx = post.postIdx\n" +
@@ -87,8 +89,7 @@ public class PostRepository {
                             rsT.getInt("post.postIdx"),
                             rsT.getString("imgUrl"),
                             rsT.getString("content"),
-                            rsT.getInt("numOfLike"),
-                            rsT.getBoolean("checkLike")
+
                     ),getPostParams);
 
             String getMyPostInfoQuery1 = "select id, np.numOfPost, point\n" +
@@ -107,4 +108,15 @@ public class PostRepository {
 
         }
 
+    public void createEmoji(PostPostEmojiReq postPostEmojiReq) {
+        String createEmojiQuery = "insert into ";
+        Object[] createEmojiParam = new Object[]{postPostEmojiReq.getUserIdx(),postPostEmojiReq.getPostIdx(),postPostEmojiReq.getEmojiIdx()};
+
+    }
+
+    public void deleteEmoji(PostDeleteEmojiReq postDeleteEmojiReq) {
+        String deleteEmojiQuery = "";
+        Object[] deleteEmojiParam = new Object[]{postDeleteEmojiReq.getUserIdx(),postDeleteEmojiReq.getPostIdx(),postDeleteEmojiReq.}
+
+    }
 }

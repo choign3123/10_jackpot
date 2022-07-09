@@ -8,7 +8,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class PostDeleteLikeReq {
+public class PostDeleteEmojiReq {
     private int userIdx;
     private int postIdx;
+    private int emojiIdx;
 }
