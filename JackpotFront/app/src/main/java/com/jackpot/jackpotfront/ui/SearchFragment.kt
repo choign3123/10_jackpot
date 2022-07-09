@@ -9,7 +9,7 @@ import com.jackpot.jackpotfront.R
 
 class SearchFragment : Fragment() {
 
-    late 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
