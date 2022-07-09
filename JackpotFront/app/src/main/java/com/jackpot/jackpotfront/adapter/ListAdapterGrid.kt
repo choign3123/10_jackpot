@@ -28,9 +28,6 @@ class ListAdapterGrid(val context: Context?, var userIdx: Int?, val img_list: Li
 
     class GridAdapter(val binding: ItemGridBinding): RecyclerView.ViewHolder(binding.root)
 
-    // 즐겨찾기 애니메이션
-    var isHearting: Boolean = false
-    lateinit var lottie: LottieAnimationView
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GridAdapter {
@@ -41,6 +38,8 @@ class ListAdapterGrid(val context: Context?, var userIdx: Int?, val img_list: Li
 
     override fun onBindViewHolder(holder: GridAdapter, position: Int) {
         val img = holder.binding.gridViewImg
+        val retrofit = RetrofitService.create()
+
 //        img.setImageURI(img_list[position].clthImgUrl.toUri())
         Glide.with(context!!)
             .load("https://test-domains.shop/posts/img/display/"+img_list[position].imgUrl)
@@ -50,19 +49,11 @@ class ListAdapterGrid(val context: Context?, var userIdx: Int?, val img_list: Li
         holder.binding.content.text = img_list[position].content
         setViewMore(holder.binding.content,holder.binding.viewMore)
 
-        // 그리드 뷰에서 개별 옷 클릭 시
-//        img.setOnClickListener() {
-//            val intent = Intent( context ,ClothActivity::class.java)
-//            intent.putExtra("userIdx", userIdx)
-//            intent.putExtra("clothIdx", img_list[position]!!.clthIdx)
-//
-//            ContextCompat.startActivity(context, intent, null)
-//        }
+
 
         holder.binding.deleteIv.setOnClickListener {
             Log.d("delete btn", "눌렸음 ")
-            val retrofit = RetrofitService.create()
-            val service = retrofit.deletePost(UserIdxObject.userIdx,img_list[position].postIdx).enqueue(object : Callback<DeletePostResult>{
+            retrofit.deletePost(UserIdxObject.userIdx,img_list[position].postIdx).enqueue(object : Callback<DeletePostResult>{
                 override fun onResponse(
                     call: Call<DeletePostResult>,
                     response: Response<DeletePostResult>
@@ -75,6 +66,10 @@ class ListAdapterGrid(val context: Context?, var userIdx: Int?, val img_list: Li
                 }
             })
         }
+
+        holder.binding.imageView.setOnClickListener(
+//            retrofit.patchReport(UserIdxObject.userIdx, img_list[position].postIdx).enqu
+        )
 
 
     }
