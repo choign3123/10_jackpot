@@ -80,6 +80,8 @@ class AddPostsActivity : AppCompatActivity() {
                     Log.d("MYTAG","FAIL")
                 }
             })
+
+            startActivity(Intent(this@AddPostsActivity,MainActivity::class.java))
         }
     }
     private fun albumResultLauncher() =

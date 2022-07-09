@@ -23,21 +23,21 @@ class MyPageFragment : Fragment() {
     ): View? {
         binding = FragmentMyPageBinding.inflate(layoutInflater,container,false)
 
-        var testObject: ArrayList<TestPostObject> = ArrayList()
-        var postObject: TestPostObject = TestPostObject(1,
-            "https://hana-umc.shop/test/display/1657267165243img.jpg",
-            "testStringqfi;ljqwqwfj;jiwqfj;wfq;jilqwflfuawfhawklff;lqwfl;qwjifqfwafawfajil;fwa;fjil;wf")
-        testObject?.add(postObject)
+//        var testObject: List<TestPostObject> = ArrayList<TestPostObject>()
+//        var postObject: TestPostObject = TestPostObject(1,
+//            "https://hana-umc.shop/test/display/1657267165243img.jpg",
+//            "testStringqfi;ljqwqwfj;jiwqfj;wfq;jilqwflfuawfhawklff;lqwfl;qwjifqfwafawfajil;fwa;fjil;wf")
+//        testObject?.add(postObject)
 
         ////// 그리드 뷰로 화면 출력 //////
-        val listManager = GridLayoutManager(context,1)
-        var listAdapter = ListAdapterGrid(context, userIdx, testObject)
-
-        var recyclerList = binding.recyclerView.apply {
-            setHasFixedSize(true)
-            layoutManager = listManager
-            adapter = listAdapter
-        }
+//        val listManager = GridLayoutManager(context,1)
+//        var listAdapter = ListAdapterGrid(co ntext, userIdx, testObject)
+//
+//        var recyclerList = binding.recyclerView.apply {
+//            setHasFixedSize(true)
+//            layoutManager = listManager
+//            adapter = listAdapter
+//        }
 
         return binding.root
     }

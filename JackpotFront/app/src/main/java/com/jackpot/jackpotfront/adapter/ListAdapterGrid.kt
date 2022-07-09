@@ -12,6 +12,8 @@ import com.airbnb.lottie.LottieAnimationView
 import com.bumptech.glide.Glide
 import com.jackpot.jackpotfront.R
 import com.jackpot.jackpotfront.databinding.ItemGridBinding
+import com.jackpot.jackpotfront.retrofit.data.GetAllPostObject
+import com.jackpot.jackpotfront.retrofit.data.GetAllPostResult
 import com.jackpot.jackpotfront.retrofit.RetrofitService
 import com.jackpot.jackpotfront.retrofit.data.DeletePostResult
 import com.jackpot.jackpotfront.retrofit.data.TestPostObject
@@ -21,7 +23,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class ListAdapterGrid(val context: Context?, var userIdx: Int?, val img_list: ArrayList<TestPostObject>)
+class ListAdapterGrid(val context: Context?, var userIdx: Int?, val img_list: List<GetAllPostObject>)
     : RecyclerView.Adapter<ListAdapterGrid.GridAdapter>() {
 
     class GridAdapter(val binding: ItemGridBinding): RecyclerView.ViewHolder(binding.root)
@@ -41,7 +43,7 @@ class ListAdapterGrid(val context: Context?, var userIdx: Int?, val img_list: Ar
         val img = holder.binding.gridViewImg
 //        img.setImageURI(img_list[position].clthImgUrl.toUri())
         Glide.with(context!!)
-            .load(img_list[position].imgUrl)
+            .load("https://test-domains.shop/posts/img/display/"+img_list[position].imgUrl)
             .thumbnail(0.1f)
             .into(img)
 
