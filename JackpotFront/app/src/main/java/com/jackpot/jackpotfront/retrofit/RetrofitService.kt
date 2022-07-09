@@ -57,13 +57,23 @@ interface RetrofitService {
         @Query("page") page: Int
     ): Call<GetMyPostResult>
 
+    // 이모지 활성화
+    @POST("/posts/emoji")
+    fun postPostsEmoji(
+        @Body postEmoji: PostsEmoji
+    ): retrofit2.Call<PostEmojiRes>
 
-
-    // 신고
-//    @PATCH("/posts/notify/{postIdx}")
-//    fun patchReport(
-//        @Path("postIdx") postIdx: Int,
-//    )
+    // 이모지 삭제
+    @DELETE("/posts/emoji")
+    fun deletePostsEmoji(
+        @Body deleteEmoji: PostsEmoji
+    ): retrofit2.Call<PostEmojiRes>
+    // 이미지 신고
+    @PATCH("/posts/notify/{postIdx}")
+    fun patchReport(
+        @Path("userIdx") userIdx: Int,
+        @Query("postIdx") postIdx: Int
+    )
 
 
     // 싱글톤

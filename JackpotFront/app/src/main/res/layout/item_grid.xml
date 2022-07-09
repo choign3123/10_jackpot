@@ -45,20 +45,34 @@
         android:layout_height="match_parent"
         android:orientation="horizontal">
 
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/favButton"
+        <ImageButton
+            android:id="@+id/favButton1"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            app:lottie_autoPlay="false"
-            app:lottie_fileName="heart.json"
-            app:lottie_loop="false" />
+            android:src="@drawable/img_1"/>
+        <ImageButton
+            android:id="@+id/favButton2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/img21" />
+        <ImageButton
+            android:id="@+id/favButton3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/img22" />
+        <ImageButton
+            android:id="@+id/favButton4"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/img23" />
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="#EC407A"
-            tools:srcCompat="@android:drawable/stat_sys_warning" />
+            tools:srcCompat="@android:drawable/stat_sys_warning"
+            android:layout_gravity="right"/>
     </LinearLayout>
 
     <!--    android:onClick="onClickButton"-->
