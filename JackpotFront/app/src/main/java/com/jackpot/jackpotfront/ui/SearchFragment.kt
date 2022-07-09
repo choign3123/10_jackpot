@@ -1,21 +1,31 @@
 package com.jackpot.jackpotfront.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import com.jackpot.jackpotfront.R
+import com.jackpot.jackpotfront.databinding.FragmentPostBinding
+import com.jackpot.jackpotfront.databinding.FragmentSearchBinding
 
 class SearchFragment : Fragment() {
 
-    late 
+    private lateinit var binding:FragmentSearchBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false)
+        binding = FragmentSearchBinding.inflate(inflater,container,false)
+        binding.searchBtn.setOnClickListener{
+            val query = binding.searchView.query
+
+            Log.d("query", "$query")
+            // Retrofit 통신 자리
+        }
+        return binding.root
     }
 
 }
