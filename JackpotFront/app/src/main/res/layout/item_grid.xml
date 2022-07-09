@@ -20,6 +20,15 @@
         android:scaleType="centerCrop"
         tools:srcCompat="@tools:sample/avatars" />
 
+    <!--    즐겨찾기 애니메이션-->
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/favButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:lottie_autoPlay="false"
+        app:lottie_fileName="heart.json"
+        app:lottie_loop="false" />
+    <!--    android:onClick="onClickButton"-->
 
     <TextView
         android:id="@+id/textView3"
@@ -30,11 +39,12 @@
     <TextView
         android:id="@+id/content"
         android:layout_width="match_parent"
-        android:layout_height="139dp"
+        android:layout_height="wrap_content"
         android:text="본문"
-        android:maxLines="5"
+        android:maxLines="2"
+        android:textSize="20dp"
         android:ellipsize="end"
-        android:textColor="@color/black"/>
+        android:textColor="@color/white"/>
     <TextView
         android:id="@+id/view_more"
         android:layout_width="wrap_content"
@@ -43,6 +53,4 @@
         android:visibility="gone"
         app:layout_constraintTop_toBottomOf="@id/content"
         app:layout_constraintStart_toStartOf="parent" />
-
-
 </LinearLayout>

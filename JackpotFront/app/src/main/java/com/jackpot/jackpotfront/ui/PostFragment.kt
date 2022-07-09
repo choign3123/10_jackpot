@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import com.jackpot.jackpotfront.adapter.ListAdapterGrid
 import com.jackpot.jackpotfront.databinding.FragmentPostBinding
@@ -29,7 +30,7 @@ class PostFragment : Fragment() {
         var testObject: ArrayList<AllPostsObject> = ArrayList()
         var postObject: AllPostsObject = AllPostsObject(1,
             "https://hana-umc.shop/test/display/1657267165243img.jpg",
-        "testString")
+        "testStringqfi;ljqwqwfj;jiwqfj;wfq;jilqwflfuawfhawklff;lqwfl;qwjifqfwafawfajil;fwa;fjil;wf")
         testObject?.add(postObject)
 
         ////// 그리드 뷰로 화면 출력 //////
@@ -41,6 +42,7 @@ class PostFragment : Fragment() {
             layoutManager = listManager
             adapter = listAdapter
         }
+
         ////// 그리드 뷰로 화면 출력 //////
 
         binding.fab.setOnClickListener {
@@ -50,4 +52,5 @@ class PostFragment : Fragment() {
 
         return binding.root
     }
+
 }

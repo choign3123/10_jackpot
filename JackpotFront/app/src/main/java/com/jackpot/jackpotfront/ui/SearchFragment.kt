@@ -32,8 +32,6 @@ class SearchFragment : Fragment() {
         }
 
 
-
         return binding.root
-        return inflater.inflate(R.layout.fragment_search, container, false)
     }
 }
