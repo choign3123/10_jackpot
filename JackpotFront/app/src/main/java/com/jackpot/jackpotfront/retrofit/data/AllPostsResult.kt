@@ -10,7 +10,7 @@ data class AllPostsResult(
 )
 
 data class  AllPostsObject(
-    val clthIdx:	Int,
+    val postIdx:	Int,
     val imgUrl:	String,
     val contents: String
 )
