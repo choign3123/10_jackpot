@@ -18,7 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/posts")
-@CrossOrigin(origins = "http://hana-umc.shop")
+@CrossOrigin(origins = "https://test-domains.shop")
 public class PostController {
 
     private final PostService postService;
@@ -80,6 +80,7 @@ public class PostController {
     ///[GET] posts/search/{userIdx}?q=""&page=""
     @ResponseBody
     @GetMapping("/search/{userIdx}")
+    @Operation(summary = "게시물 검색", description = "게시물 검색")
     public BaseResponse<List<GetPostRes>> searchPost(@PathVariable("userIdx") int userIdx,@RequestParam("q") String q,@RequestParam("page") int page){
         try{
             List<GetPostRes> getPostRes = postService.searchPost(userIdx,q,page);
@@ -94,6 +95,7 @@ public class PostController {
     //[GET] posts/my/{userIdx}?page=""
     @ResponseBody
     @GetMapping("/my/{userIdx}")
+    @Operation(summary = "게시물 my 조회", description = "게시물 my 조회")
     public BaseResponse<GetMyPostRes> getMyPostInfo(@PathVariable("userIdx")int userIdx,@RequestParam("page") int page){
         try{
             GetMyPostRes getMyPostRes = postService.getMyPostInfo(userIdx,page);
@@ -119,6 +121,7 @@ public class PostController {
     //[POST] posts/emoji
     @ResponseBody
     @PostMapping("/emoji")
+    @Operation(summary = "이모지 활성화", description = "이모지 활성화")
     public BaseResponse<String> createEmoji(@RequestBody PostPostEmojiReq postPostEmojiReq){
         try{
             postService.createEmoji(postPostEmojiReq);
@@ -133,6 +136,7 @@ public class PostController {
     //[DELETE] posts/emoji
     @ResponseBody
     @DeleteMapping("/emoji")
+    @Operation(summary = "이모지 삭제", description = "이모지 삭제")
     public BaseResponse<String> deleteEmoji(@RequestBody PostDeleteEmojiReq postDeleteEmojiReq){
         try{
             postService.deleteEmoji(postDeleteEmojiReq);
@@ -147,6 +151,7 @@ public class PostController {
     //[PATCH] /posts/notify/{userIdx}?postIdx=""
     @ResponseBody
     @PatchMapping("/notify/{userIdx}")
+    @Operation(summary = "신고", description = "신고")
     public BaseResponse<String> notifyPost(@PathVariable("userIdx") int userIdx,@RequestParam("postIdx") int postIdx){
         try{
             postService.notifyPost(userIdx,postIdx);

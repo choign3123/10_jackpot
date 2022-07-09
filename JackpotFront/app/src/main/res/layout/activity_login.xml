@@ -26,8 +26,6 @@
         android:maxWidth="@dimen/custom_max_width"
         android:hint="pwd">
 
-
-
     <Button
         android:id="@+id/login_btn"
         android:layout_width="wrap_content"

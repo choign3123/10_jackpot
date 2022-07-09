@@ -12,7 +12,7 @@ import javax.sql.DataSource;
 
 @RestController
 @RequestMapping("/users")
-@CrossOrigin(origins = "https://hana-umc.shop")
+@CrossOrigin(origins = "https://test-domains.shop")
 public class UserController {
 
     private final UserService userService;
