@@ -5,10 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".ui.SearchFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="search" />
+        android:layout_height="wrap_content" />
 
 </FrameLayout>
