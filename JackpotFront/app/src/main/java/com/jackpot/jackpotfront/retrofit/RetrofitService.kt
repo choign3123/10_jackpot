@@ -64,7 +64,8 @@ interface RetrofitService {
     ): Call<PostEmojiRes>
 
     // 이모지 삭제
-    @DELETE("/posts/emoji")
+    //@DELETE("/posts/emoji")
+    @HTTP(method = "DELETE", path = "/posts/emoji", hasBody = true)
     fun deletePostsEmoji(
         @Body deleteEmoji: PostsEmoji
     ): Call<PostEmojiRes>

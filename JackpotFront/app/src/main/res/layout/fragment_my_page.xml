@@ -17,6 +17,23 @@
             android:layout_height="58dp"
             android:text="안녕."
             android:textSize="40sp" />
+            android:layout_height="wrap_content"
+            app:title="name"
+            app:titleTextColor="@android:color/white"
+            app:subtitle="Point"
+            app:subtitleTextColor="@android:color/white"
+            app:layout_scrollFlags="scroll|enterAlways"
+            />
+
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="633dp"
+            android:layout_gravity="bottom"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        <com.google.android.material.appbar.CollapsingToolbarLayout
 
         <TextView
             android:id="@+id/textView4"
