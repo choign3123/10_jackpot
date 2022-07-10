@@ -79,6 +79,41 @@ class ListAdapterGrid(val context: Context?, var userIdx: Int?, val img_list: Li
             dialog.show()
 
         }
+
+        holder.binding.imageView.setOnClickListener {
+
+            val builder = AlertDialog.Builder(context)
+            builder.setTitle("신고")
+                .setMessage("정말 신고합니까?")
+
+            builder.setPositiveButton("OK") { dialogInterface, i ->
+
+                retrofit.patchReport(UserIdxObject.userIdx, img_list[position].postIdx)
+                    .enqueue(object : Callback<PatchReportResult> {
+                        override fun onResponse(
+                            call: Call<PatchReportResult>,
+                            response: Response<PatchReportResult>
+                        ) {
+                            Log.d("MYTAG", "SUCCESS")
+                            Log.d("MYTAG", response.body()?.result.toString())
+
+                        }
+
+                        override fun onFailure(call: Call<PatchReportResult>, t: Throwable) {
+                            Log.d("MYTAG", t.message.toString())
+                            Log.d("MYTAG", "FAIL")
+                        }
+                    })
+            }
+            builder.setNegativeButton("EXIT") { dialogInterface, i ->
+            }
+            val dialog = builder.create()
+            dialog.show()
+
+
+
+        }
+
         if(img_list[position].checkEmoji[0]){
             holder.binding.favButton1.setImageResource(R.drawable.img21)
         }else{
@@ -278,39 +313,6 @@ class ListAdapterGrid(val context: Context?, var userIdx: Int?, val img_list: Li
                     if (contentTextView.layout.getEllipsisCount(lineCount - 1) > 0) {
                         // 더보기 표시
                         viewMoreTextView.visibility = View.VISIBLE
-        holder.binding.imageView.setOnClickListener {
-
-            val builder = AlertDialog.Builder(context)
-            builder.setTitle("신고")
-                .setMessage("정말 신고합니까?")
-
-            builder.setPositiveButton("OK") { dialogInterface, i ->
-
-                retrofit.patchReport(UserIdxObject.userIdx, img_list[position].postIdx)
-                    .enqueue(object : Callback<PatchReportResult> {
-                        override fun onResponse(
-                            call: Call<PatchReportResult>,
-                            response: Response<PatchReportResult>
-                        ) {
-                            Log.d("MYTAG", "SUCCESS")
-                            Log.d("MYTAG", response.body()?.result.toString())
-
-                        }
-
-                        override fun onFailure(call: Call<PatchReportResult>, t: Throwable) {
-                            Log.d("MYTAG", t.message.toString())
-                            Log.d("MYTAG", "FAIL")
-                        }
-                    })
-            }
-            builder.setNegativeButton("EXIT") { dialogInterface, i ->
-            }
-            val dialog = builder.create()
-            dialog.show()
-
-
-
-        }
     }
 
                         // 더보기 클릭 이벤트
@@ -323,7 +325,7 @@ class ListAdapterGrid(val context: Context?, var userIdx: Int?, val img_list: Li
             }
         }
 
-}
+
 
 //    fun onClickButton(view: View) {
 //
@@ -354,5 +356,4 @@ class ListAdapterGrid(val context: Context?, var userIdx: Int?, val img_list: Li
 //        }
 //    }
 
-    }
-}
+
