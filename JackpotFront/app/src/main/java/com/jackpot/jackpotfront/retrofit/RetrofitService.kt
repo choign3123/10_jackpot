@@ -61,20 +61,20 @@ interface RetrofitService {
     @POST("/posts/emoji")
     fun postPostsEmoji(
         @Body postEmoji: PostsEmoji
-    ): retrofit2.Call<PostEmojiRes>
+    ): Call<PostEmojiRes>
 
     // 이모지 삭제
     //@DELETE("/posts/emoji")
     @HTTP(method = "DELETE", path = "/posts/emoji", hasBody = true)
     fun deletePostsEmoji(
         @Body deleteEmoji: PostsEmoji
-    ): retrofit2.Call<PostEmojiRes>
+    ): Call<PostEmojiRes>
     // 이미지 신고
-    @PATCH("/posts/notify/{postIdx}")
+    @PATCH("/posts/notify/{userIdx}")
     fun patchReport(
-        @Path("userIdx") userIdx: Int,
+        @Path("userIdx") userIdx: Int?,
         @Query("postIdx") postIdx: Int
-    )
+    ): Call<PatchReportResult>
 
 
     // 싱글톤

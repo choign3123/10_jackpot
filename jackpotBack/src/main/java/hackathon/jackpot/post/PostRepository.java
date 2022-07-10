@@ -38,12 +38,12 @@ public class PostRepository {
 
     //게시물 전체 조회
     public List<GetPostRes> getPostInfo(int userIdx, int page) {
-        String getPostInfoQuery = "select post.postIdx, imgUrl, content,\n" +
+        String getPostInfoQuery = "select user.id, post.postIdx, imgUrl, content,\n" +
                 "       (select exists(select postLikeIdx from postLike where userIdx = ? and postIdx = post.postIdx and postLike.emogiIdx=0)) as checkEm0,\n" +
                 "       (select exists(select postLikeIdx from postLike where userIdx = ? and postIdx = post.postIdx and postLike.emogiIdx=1)) as checkEm1,\n" +
                 "       (select exists(select postLikeIdx from postLike where userIdx = ? and postIdx = post.postIdx and postLike.emogiIdx=2)) as checkEm2,\n" +
                 "       (select exists(select postLikeIdx from postLike where userIdx = ? and postIdx = post.postIdx and postLike.emogiIdx=3)) as checkEm3\n" +
-                "from post\n" +
+                "from post join user on post.userIdx = user.userIdx\n" +
                 "order by createdAt desc, postIdx desc\n" +
                 "limit ?, ?;";
 
@@ -53,6 +53,7 @@ public class PostRepository {
                         rs.getInt("post.postIdx"),
                         rs.getString("imgUrl"),
                         rs.getString("content"),
+                        rs.getString("user.id"),
                         Arrays.asList(rs.getBoolean("checkEm0"), rs.getBoolean("checkEm1"),
                                 rs.getBoolean("checkEm2"),rs.getBoolean("checkEm3"))
                 ), getPostinfoQuery);
@@ -69,13 +70,13 @@ public class PostRepository {
 
     //게시물 검색
     public List<GetPostRes> searchPost(int userIdx, String q, int page) {
-        String searchPostQuery = "select postIdx, imgUrl, content,\n" +
+        String searchPostQuery = "select user.id, post.postIdx, imgUrl, content,\n" +
                 "        (select exists(select postLikeIdx from postLike where userIdx = ? and postIdx = post.postIdx and postLike.emogiIdx=0)) as checkEm0,\n" +
                 "        (select exists(select postLikeIdx from postLike where userIdx = ? and postIdx = post.postIdx and postLike.emogiIdx=1)) as checkEm1,\n" +
                 "        (select exists(select postLikeIdx from postLike where userIdx = ? and postIdx = post.postIdx and postLike.emogiIdx=2)) as checkEm2,\n" +
                 "        (select exists(select postLikeIdx from postLike where userIdx = ? and postIdx = post.postIdx and postLike.emogiIdx=3)) as checkEm3\n" +
-                "from post\n" +
-                "where post.content like '%"+ q +"%'\n" +
+                "from post join user on post.userIdx = user.userIdx\n" +
+                "where post.content like '%"+q+"%'\n" +
                 "order by createdAt desc, postIdx desc\n" +
                 "limit ?,?";
         System.out.println(searchPostQuery);
@@ -84,6 +85,7 @@ public class PostRepository {
                 rs.getInt("postIdx"),
                 rs.getString("imgUrl"),
                 rs.getString("content"),
+                rs.getString("user.id"),
                 Arrays.asList(rs.getBoolean("checkEm0"), rs.getBoolean("checkEm1"),
                         rs.getBoolean("checkEm2"), rs.getBoolean("checkEm3"))
 
@@ -94,13 +96,13 @@ public class PostRepository {
     public GetMyPostRes getMyPostInfo(int userIdx,int page){
 
 
-        String getPostQuery = "select postIdx, imgUrl, content,\n" +
+        String getPostQuery = "select user.id, post.postIdx, imgUrl, content,\n" +
                 "        (select exists(select postLikeIdx from postLike where userIdx = ? and postIdx = post.postIdx and postLike.emogiIdx=0)) as checkEm0,\n" +
                 "        (select exists(select postLikeIdx from postLike where userIdx = ? and postIdx = post.postIdx and postLike.emogiIdx=1)) as checkEm1,\n" +
                 "        (select exists(select postLikeIdx from postLike where userIdx = ? and postIdx = post.postIdx and postLike.emogiIdx=2)) as checkEm2,\n" +
                 "        (select exists(select postLikeIdx from postLike where userIdx = ? and postIdx = post.postIdx and postLike.emogiIdx=3)) as checkEm3\n" +
-                "from post\n" +
-                "where userIdx = ?\n" +
+                "from post join user on post.userIdx = user.userIdx\n" +
+                "where user.userIdx = ?\n" +
                 "order by createdAt desc, postIdx desc\n" +
                 "limit ?,?";
         Object[] getPostParams = new Object[]{userIdx, userIdx, userIdx, userIdx, userIdx, page, PAGE_SIZE};
@@ -109,6 +111,7 @@ public class PostRepository {
                         rsT.getInt("post.postIdx"),
                         rsT.getString("imgUrl"),
                         rsT.getString("content"),
+                        rsT.getString("user.id"),
                         Arrays.asList(rsT.getBoolean("checkEm0"), rsT.getBoolean("checkEm1"),
                                 rsT.getBoolean("checkEm2"), rsT.getBoolean("checkEm3"))
 

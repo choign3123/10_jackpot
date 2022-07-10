@@ -1,11 +1,17 @@
 package com.jackpot.jackpotfront.adapter
 
+import android.animation.ValueAnimator
+import android.app.AlertDialog
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
+import android.provider.Settings
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.jackpot.jackpotfront.R
@@ -36,27 +42,41 @@ class ListAdapterGrid(val context: Context?, var userIdx: Int?, val img_list: Li
 
 //        img.setImageURI(img_list[position].clthImgUrl.toUri())
         Glide.with(context!!)
-            .load("https://test-domains.shop/posts/img/display/"+img_list[position].imgUrl)
+            .load("https://test-domains.shop/posts/img/display/" + img_list[position].imgUrl)
             .thumbnail(0.1f)
             .into(img)
 
         holder.binding.content.text = img_list[position].content
-        setViewMore(holder.binding.content,holder.binding.viewMore)
+        setViewMore(holder.binding.content, holder.binding.viewMore)
 
         holder.binding.deleteIv.setOnClickListener {
             Log.d("delete btn", "눌렸음 ")
-            retrofit.deletePost(UserIdxObject.userIdx,img_list[position].postIdx).enqueue(object : Callback<DeletePostResult>{
-                override fun onResponse(
-                    call: Call<DeletePostResult>,
-                    response: Response<DeletePostResult>
-                ) {
-                    Log.d("삭제 성공","{${response.body()}}")
-                }
 
-                override fun onFailure(call: Call<DeletePostResult>, t: Throwable) {
-                    Log.d("삭제 실패 래요 ","실패한 삭제 ")
-                }
-            })
+            val builder = AlertDialog.Builder(context)
+            builder.setTitle("삭제")
+                .setMessage("정말 삭제합니까?")
+
+            builder.setPositiveButton("OK") { dialogInterface, i ->
+
+                retrofit.deletePost(UserIdxObject.userIdx, img_list[position].postIdx)
+                    .enqueue(object : Callback<DeletePostResult> {
+                        override fun onResponse(
+                            call: Call<DeletePostResult>,
+                            response: Response<DeletePostResult>
+                        ) {
+                            Log.d("삭제 성공", "{${response.body()}}")
+                        }
+
+                        override fun onFailure(call: Call<DeletePostResult>, t: Throwable) {
+                            Log.d("삭제 실패 래요 ", "실패한 삭제 ")
+                        }
+                    })
+            }
+            builder.setNegativeButton("EXIT") { dialogInterface, i ->
+            }
+            val dialog = builder.create()
+            dialog.show()
+
         }
         if(img_list[position].checkEmoji[0]){
             holder.binding.favButton1.setImageResource(R.drawable.img21)
@@ -78,6 +98,7 @@ class ListAdapterGrid(val context: Context?, var userIdx: Int?, val img_list: Li
         }else{
             holder.binding.favButton4.setImageResource(R.drawable.img14)
         }
+
 
         holder.binding.favButton1.setOnClickListener {
             if (img_list[position].checkEmoji[0]) {
@@ -256,6 +277,40 @@ class ListAdapterGrid(val context: Context?, var userIdx: Int?, val img_list: Li
                     if (contentTextView.layout.getEllipsisCount(lineCount - 1) > 0) {
                         // 더보기 표시
                         viewMoreTextView.visibility = View.VISIBLE
+        holder.binding.imageView.setOnClickListener {
+
+            val builder = AlertDialog.Builder(context)
+            builder.setTitle("신고")
+                .setMessage("정말 신고합니까?")
+
+            builder.setPositiveButton("OK") { dialogInterface, i ->
+
+                retrofit.patchReport(UserIdxObject.userIdx, img_list[position].postIdx)
+                    .enqueue(object : Callback<PatchReportResult> {
+                        override fun onResponse(
+                            call: Call<PatchReportResult>,
+                            response: Response<PatchReportResult>
+                        ) {
+                            Log.d("MYTAG", "SUCCESS")
+                            Log.d("MYTAG", response.body()?.result.toString())
+
+                        }
+
+                        override fun onFailure(call: Call<PatchReportResult>, t: Throwable) {
+                            Log.d("MYTAG", t.message.toString())
+                            Log.d("MYTAG", "FAIL")
+                        }
+                    })
+            }
+            builder.setNegativeButton("EXIT") { dialogInterface, i ->
+            }
+            val dialog = builder.create()
+            dialog.show()
+
+
+
+        }
+    }
 
                         // 더보기 클릭 이벤트
                         viewMoreTextView.setOnClickListener {
@@ -266,6 +321,7 @@ class ListAdapterGrid(val context: Context?, var userIdx: Int?, val img_list: Li
                 }
             }
         }
+
 }
 
 //    fun onClickButton(view: View) {
@@ -297,3 +353,5 @@ class ListAdapterGrid(val context: Context?, var userIdx: Int?, val img_list: Li
 //        }
 //    }
 
+    }
+}

@@ -89,7 +89,6 @@ public class PostController {
         }catch(BaseException exception){
             return new BaseResponse<>(exception.getStatus());
         }
-
     }
 
     //게시글 my조회
