@@ -1,6 +1,5 @@
 package com.jackpot.jackpotfront.adapter
 
-import android.animation.ValueAnimator
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,16 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.airbnb.lottie.LottieAnimationView
 import com.bumptech.glide.Glide
 import com.jackpot.jackpotfront.R
 import com.jackpot.jackpotfront.databinding.ItemGridBinding
-import com.jackpot.jackpotfront.retrofit.data.GetAllPostObject
-import com.jackpot.jackpotfront.retrofit.data.GetAllPostResult
 import com.jackpot.jackpotfront.retrofit.RetrofitService
-import com.jackpot.jackpotfront.retrofit.data.DeletePostResult
-import com.jackpot.jackpotfront.retrofit.data.TestPostObject
-import com.jackpot.jackpotfront.retrofit.data.UserIdxObject
+import com.jackpot.jackpotfront.retrofit.data.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -49,8 +43,6 @@ class ListAdapterGrid(val context: Context?, var userIdx: Int?, val img_list: Li
         holder.binding.content.text = img_list[position].content
         setViewMore(holder.binding.content,holder.binding.viewMore)
 
-
-
         holder.binding.deleteIv.setOnClickListener {
             Log.d("delete btn", "눌렸음 ")
             retrofit.deletePost(UserIdxObject.userIdx,img_list[position].postIdx).enqueue(object : Callback<DeletePostResult>{
@@ -66,36 +58,215 @@ class ListAdapterGrid(val context: Context?, var userIdx: Int?, val img_list: Li
                 }
             })
         }
+        if(img_list[position].checkEmoji[0]){
+            holder.binding.favButton1.setImageResource(R.drawable.img21)
+        }else{
+            holder.binding.favButton1.setImageResource(R.drawable.img11)
+        }
+        if(img_list[position].checkEmoji[1]){
+            holder.binding.favButton2.setImageResource(R.drawable.img22)
+        }else{
+            holder.binding.favButton2.setImageResource(R.drawable.img12)
+        }
+        if(img_list[position].checkEmoji[2]){
+            holder.binding.favButton3.setImageResource(R.drawable.img23)
+        }else{
+            holder.binding.favButton3.setImageResource(R.drawable.img13)
+        }
+        if(img_list[position].checkEmoji[2]){
+            holder.binding.favButton4.setImageResource(R.drawable.img24)
+        }else{
+            holder.binding.favButton4.setImageResource(R.drawable.img14)
+        }
 
-        holder.binding.imageView.setOnClickListener(
-//            retrofit.patchReport(UserIdxObject.userIdx, img_list[position].postIdx).enqu
-        )
+        holder.binding.favButton1.setOnClickListener {
+            if (img_list[position].checkEmoji[0]) {
+                retrofit.deletePostsEmoji(
+                    PostsEmoji(
+                        UserIdxObject.userIdx!!,
+                        img_list[position].postIdx,
+                        0
+                    )
+                ).enqueue(object : Callback<PostEmojiRes> {
+                    override fun onResponse(
+                        call: Call<PostEmojiRes>,
+                        response: Response<PostEmojiRes>
+                    ) {
+                        holder.binding.favButton1.setImageResource(R.drawable.img11)
+                    }
+
+                    override fun onFailure(call: Call<PostEmojiRes>, t: Throwable) {
+                        Log.d("이모지 통신 실패", "실패")
+                    }
+                })
+            } else {
+                retrofit.postPostsEmoji(
+                    PostsEmoji(
+                        UserIdxObject.userIdx!!,
+                        img_list[position].postIdx,
+                        0
+                    )
+                ).enqueue(object : Callback<PostEmojiRes> {
+                    override fun onResponse(
+                        call: Call<PostEmojiRes>,
+                        response: Response<PostEmojiRes>
+                    ) {
+                        holder.binding.favButton1.setImageResource(R.drawable.img21)
+                    }
+
+                    override fun onFailure(call: Call<PostEmojiRes>, t: Throwable) {
+                        Log.d("이모지 통신 실패", "실패")
+                    }
+                })
+            }
+            holder.binding.favButton2.setOnClickListener {
+                if (img_list[position].checkEmoji[1]) {
+                    retrofit.deletePostsEmoji(
+                        PostsEmoji(
+                            UserIdxObject.userIdx!!,
+                            img_list[position].postIdx,
+                            1
+                        )
+                    ).enqueue(object : Callback<PostEmojiRes> {
+                        override fun onResponse(
+                            call: Call<PostEmojiRes>,
+                            response: Response<PostEmojiRes>
+                        ) {
+                            holder.binding.favButton2.setImageResource(R.drawable.img12)
+                        }
+
+                        override fun onFailure(call: Call<PostEmojiRes>, t: Throwable) {
+                            Log.d("이모지 통신 실패", "실패")
+                        }
+                    })
+                } else {
+                    retrofit.postPostsEmoji(
+                        PostsEmoji(
+                            UserIdxObject.userIdx!!,
+                            img_list[position].postIdx,
+                            1
+                        )
+                    ).enqueue(object : Callback<PostEmojiRes> {
+                        override fun onResponse(
+                            call: Call<PostEmojiRes>,
+                            response: Response<PostEmojiRes>
+                        ) {
+                            holder.binding.favButton2.setImageResource(R.drawable.img22)
+                        }
+
+                        override fun onFailure(call: Call<PostEmojiRes>, t: Throwable) {
+                            Log.d("이모지 통신 실패", "실패")
+                        }
+                    })
+                }
+                holder.binding.favButton3.setOnClickListener {
+                    if (img_list[position].checkEmoji[2]) {
+                        retrofit.deletePostsEmoji(
+                            PostsEmoji(
+                                UserIdxObject.userIdx!!,
+                                img_list[position].postIdx,
+                                2
+                            )
+                        ).enqueue(object : Callback<PostEmojiRes> {
+                            override fun onResponse(
+                                call: Call<PostEmojiRes>,
+                                response: Response<PostEmojiRes>
+                            ) {
+                                holder.binding.favButton3.setImageResource(R.drawable.img13)
+                            }
+
+                            override fun onFailure(call: Call<PostEmojiRes>, t: Throwable) {
+                                Log.d("이모지 통신 실패", "실패")
+                            }
+                        })
+                    } else {
+                        retrofit.postPostsEmoji(
+                            PostsEmoji(
+                                UserIdxObject.userIdx!!,
+                                img_list[position].postIdx,
+                                2
+                            )
+                        ).enqueue(object : Callback<PostEmojiRes> {
+                            override fun onResponse(
+                                call: Call<PostEmojiRes>,
+                                response: Response<PostEmojiRes>
+                            ) {
+                                holder.binding.favButton3.setImageResource(R.drawable.img23)
+                            }
+
+                            override fun onFailure(call: Call<PostEmojiRes>, t: Throwable) {
+                                Log.d("이모지 통신 실패", "실패")
+                            }
+                        })
+                    }
+                }
+                holder.binding.favButton4.setOnClickListener {
+                    if (img_list[position].checkEmoji[3]) {
+                        retrofit.deletePostsEmoji(
+                            PostsEmoji(
+                                UserIdxObject.userIdx!!,
+                                img_list[position].postIdx,
+                                3
+                            )
+                        ).enqueue(object : Callback<PostEmojiRes> {
+                            override fun onResponse(
+                                call: Call<PostEmojiRes>,
+                                response: Response<PostEmojiRes>
+                            ) {
+                                holder.binding.favButton4.setImageResource(R.drawable.img14)
+                            }
+
+                            override fun onFailure(call: Call<PostEmojiRes>, t: Throwable) {
+                                Log.d("이모지 통신 실패", "실패")
+                            }
+                        })
+                    } else {
+                        retrofit.postPostsEmoji(
+                            PostsEmoji(
+                                UserIdxObject.userIdx!!,
+                                img_list[position].postIdx,
+                                3
+                            )
+                        ).enqueue(object : Callback<PostEmojiRes> {
+                            override fun onResponse(
+                                call: Call<PostEmojiRes>,
+                                response: Response<PostEmojiRes>
+                            ) {
+                                holder.binding.favButton4.setImageResource(R.drawable.img24)
+                            }
+
+                            override fun onFailure(call: Call<PostEmojiRes>, t: Throwable) {
+                                Log.d("이모지 통신 실패", "실패")
+                            }
+                        })
+                    }
+                }
+            }
+        }}
 
 
-    }
+        override fun getItemCount(): Int {
+            return img_list!!.size
+        }
+        private fun setViewMore(contentTextView: TextView, viewMoreTextView: TextView){
+            // getEllipsisCount()을 통한 더보기 표시 및 구현
+            contentTextView.post{
+                val lineCount = contentTextView.layout.lineCount
+                if (lineCount > 0) {
+                    if (contentTextView.layout.getEllipsisCount(lineCount - 1) > 0) {
+                        // 더보기 표시
+                        viewMoreTextView.visibility = View.VISIBLE
 
-
-    override fun getItemCount(): Int {
-        return img_list!!.size
-    }
-    private fun setViewMore(contentTextView: TextView, viewMoreTextView: TextView){
-        // getEllipsisCount()을 통한 더보기 표시 및 구현
-        contentTextView.post{
-            val lineCount = contentTextView.layout.lineCount
-            if (lineCount > 0) {
-                if (contentTextView.layout.getEllipsisCount(lineCount - 1) > 0) {
-                    // 더보기 표시
-                    viewMoreTextView.visibility = View.VISIBLE
-
-                    // 더보기 클릭 이벤트
-                    viewMoreTextView.setOnClickListener {
-                        contentTextView.maxLines = Int.MAX_VALUE
-                        viewMoreTextView.visibility = View.GONE
+                        // 더보기 클릭 이벤트
+                        viewMoreTextView.setOnClickListener {
+                            contentTextView.maxLines = Int.MAX_VALUE
+                            viewMoreTextView.visibility = View.GONE
+                        }
                     }
                 }
             }
         }
-    }
+}
 
 //    fun onClickButton(view: View) {
 //
@@ -125,5 +296,4 @@ class ListAdapterGrid(val context: Context?, var userIdx: Int?, val img_list: Li
 //            Log.d("MYTAG", "MainActivity - onClickButton() called / 좋아요 버튼이 꺼짐")
 //        }
 //    }
-}
 

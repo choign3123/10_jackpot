@@ -50,28 +50,29 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/img_1" />
+            android:src="@drawable/img21"/>
 
         <ImageButton
             android:id="@+id/favButton2"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/img21" />
+            android:src="@drawable/img22"/>
+
 
         <ImageButton
             android:id="@+id/favButton3"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/img22" />
+            android:src="@drawable/img23"/>
 
         <ImageButton
             android:id="@+id/favButton4"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/img23" />
+            android:src="@drawable/img24"/>
 
         <ImageView
             android:id="@+id/imageView"
