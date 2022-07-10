@@ -76,7 +76,7 @@ public class PostRepository {
                 "        (select exists(select postLikeIdx from postLike where userIdx = ? and postIdx = post.postIdx and postLike.emogiIdx=2)) as checkEm2,\n" +
                 "        (select exists(select postLikeIdx from postLike where userIdx = ? and postIdx = post.postIdx and postLike.emogiIdx=3)) as checkEm3\n" +
                 "from post join user on post.userIdx = user.userIdx\n" +
-                "where post.content like '%hi%'\n" +
+                "where post.content like '%"+q+"%'\n" +
                 "order by createdAt desc, postIdx desc\n" +
                 "limit ?,?";
         System.out.println(searchPostQuery);
