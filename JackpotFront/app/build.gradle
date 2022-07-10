@@ -58,4 +58,8 @@ dependencies {
     // 즐겨찾기 애니메이션
     def lottieVersion = '5.2.0'
     implementation "com.airbnb.android:lottie:$lottieVersion"
+
+    // 당겨서 새로고침
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+
 }

@@ -7,12 +7,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Adapter
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.jackpot.jackpotfront.R
 import com.jackpot.jackpotfront.adapter.ListAdapterGrid
 import com.jackpot.jackpotfront.databinding.FragmentPostBinding
 import com.jackpot.jackpotfront.retrofit.RetrofitService
 import com.jackpot.jackpotfront.retrofit.data.GetAllPostResult
-import com.jackpot.jackpotfront.retrofit.data.TestPostObject
 import com.jackpot.jackpotfront.retrofit.data.UserIdxObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -24,12 +26,14 @@ class PostFragment : Fragment() {
     lateinit var binding :FragmentPostBinding
     val retro = RetrofitService.create()
 
+    var adapter: Adapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentPostBinding.inflate(layoutInflater,container,false)
+
 
 //        var testObject: ArrayList<TestPostObject> = ArrayList()
 //        var postObject: TestPostObject = TestPostObject(UserIdxObject.userIdx!!,
@@ -71,5 +75,6 @@ class PostFragment : Fragment() {
 
         return binding.root
     }
+
 
 }

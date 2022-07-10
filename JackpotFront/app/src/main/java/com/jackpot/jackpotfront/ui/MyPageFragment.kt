@@ -55,6 +55,8 @@ class MyPageFragment : Fragment() {
                     adapter = listAdapter
                 }
                 ////// 그리드 뷰로 화면 출력 //////
+
+                binding.textView4.text = response.body()!!.result.id
             }
 
             override fun onFailure(call: Call<GetMyPostResult>, t: Throwable) {
@@ -82,9 +84,6 @@ class MyPageFragment : Fragment() {
 
         class GridAdapter(val binding: ItemGridBinding): RecyclerView.ViewHolder(binding.root)
 
-        // 즐겨찾기 애니메이션
-        var isHearting: Boolean = false
-        lateinit var lottie: LottieAnimationView
 
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GridAdapter {
@@ -102,6 +101,7 @@ class MyPageFragment : Fragment() {
                 .into(img)
 
             holder.binding.content.text = img_list[position].content
+            holder.binding.textView.text = img_list[position].userName
             setViewMore(holder.binding.content,holder.binding.viewMore)
 
             // 그리드 뷰에서 개별 옷 클릭 시

@@ -3,6 +3,7 @@ package com.jackpot.jackpotfront.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.jackpot.jackpotfront.R
 import com.jackpot.jackpotfront.databinding.ActivityMainBinding
 
@@ -16,6 +17,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         initBottomNavigation()
+
+
     }
     // 뒤로가기 두 번 시 종료
     override fun onBackPressed() {

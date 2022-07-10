@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/border_layout"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,6 +17,7 @@
             android:id="@+id/textView"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/regular"
             android:text="유저" />
 
         <View
@@ -50,28 +52,28 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/img_1" />
+            android:src="@drawable/img11" />
 
         <ImageButton
             android:id="@+id/favButton2"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/img21" />
+            android:src="@drawable/img13" />
 
         <ImageButton
             android:id="@+id/favButton3"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/img22" />
+            android:src="@drawable/img14" />
 
         <ImageButton
             android:id="@+id/favButton4"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/img23" />
+            android:src="@drawable/img12" />
 
         <TextView
             android:id="@+id/textView3"
@@ -83,8 +85,10 @@
             android:id="@+id/imageView"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:background="@color/white"
+            android:padding="8dp"
             android:scaleType="centerCrop"
-            android:src="@android:drawable/ic_menu_report_image" />
+            android:src="@drawable/img50" />
     </LinearLayout>
 
 

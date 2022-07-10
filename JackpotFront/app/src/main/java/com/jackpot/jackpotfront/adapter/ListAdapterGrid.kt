@@ -48,6 +48,7 @@ class ListAdapterGrid(val context: Context?, var userIdx: Int?, val img_list: Li
             .into(img)
 
         holder.binding.content.text = img_list[position].content
+        holder.binding.textView.text = img_list[position].userName
         setViewMore(holder.binding.content, holder.binding.viewMore)
 
 

@@ -17,5 +17,6 @@ data class PostsObject (
     val postIdx: Int,
     val imgUrl: String,
     val content: String,
+    val userName: String,
     val checkEmoji: List<Boolean>
         )
